@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kali Linux VM - AbidHack Arena</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#00ff41">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="vm-neumorphism.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <div class="tor-search-box">
+                    <span class="tor-search-icon">🧅</span>
+                    <input type="text" id="tor-search-input" placeholder="Tor Search..." onkeypress="if(event.key==='Enter') torSearch()">
+                    <button onclick="torSearch()" class="tor-search-btn">🔍</button>
+                </div>
+                <a href="home.html" class="home-btn">🏠 Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="lab.html">Terminal</a>
+                <a href="challenges.html">Challenges</a>
+                <a href="practical-labs.html">Labs</a>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <div class="vm-container">
+        <div class="vm-header">
+            <div class="vm-title">
+                <div class="vm-icon-large">🐉</div>
+                <div class="vm-info">
+                    <h1>Kali Linux</h1>
+                    <p>Advanced Penetration Testing Distribution</p>
+                    <div class="vm-status" id="vm-status">
+                        <span class="status-indicator offline"></span>
+                        <span class="status-text">Offline</span>
+                    </div>
+                </div>
+            </div>
+            <div class="vm-controls">
+                <button class="vm-btn start-btn" id="start-vm" onclick="startVM()">
+                    <span class="btn-icon">▶️</span>
+                    Start VM
+                </button>
+                <button class="vm-btn stop-btn" id="stop-vm" onclick="stopVM()" disabled>
+                    <span class="btn-icon">⏹️</span>
+                    Stop VM
+                </button>
+                <button class="vm-btn restart-btn" id="restart-vm" onclick="restartVM()" disabled>
+                    <span class="btn-icon">🔄</span>
+                    Restart
+                </button>
+            </div>
+        </div>
+
+        <div class="vm-content">
+            <div class="vm-specs-panel glass-panel">
+                <h3>System Specifications</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">CPU</span>
+                        <span class="spec-value">4 vCPUs</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">RAM</span>
+                        <span class="spec-value">4 GB</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Storage</span>
+                        <span class="spec-value">20 GB SSD</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Network</span>
+                        <span class="spec-value">NAT + Host-Only</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">OS Version</span>
+                        <span class="spec-value">Kali Linux 2024.1</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Desktop</span>
+                        <span class="spec-value">XFCE 4.18</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vm-tools-panel glass-panel">
+                <h3>Pre-installed Tools (600+)</h3>
+                <div class="tools-categories">
+                    <div class="tool-category">
+                        <h4>🔍 Information Gathering</h4>
+                        <div class="tool-list">
+                            <span class="tool-tag">Nmap</span>
+                            <span class="tool-tag">Masscan</span>
+                            <span class="tool-tag">Recon-ng</span>
+                            <span class="tool-tag">theHarvester</span>
+                            <span class="tool-tag">Maltego</span>
+                        </div>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🌐 Web Application Analysis</h4>
+                        <div class="tool-list">
+                            <span class="tool-tag">Burp Suite</span>
+                            <span class="tool-tag">OWASP ZAP</span>
+                            <span class="tool-tag">SQLMap</span>
+                            <span class="tool-tag">Nikto</span>
+                            <span class="tool-tag">Gobuster</span>
+                        </div>
+                    </div>
+                    <div class="tool-category">
+                        <h4>💥 Exploitation Tools</h4>
+                        <div class="tool-list">
+                            <span class="tool-tag">Metasploit</span>
+                            <span class="tool-tag">MSFVenom</span>
+                            <span class="tool-tag">SearchSploit</span>
+                            <span class="tool-tag">Social Engineer Toolkit</span>
+                            <span class="tool-tag">BeEF</span>
+                        </div>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🔐 Password Attacks</h4>
+                        <div class="tool-list">
+                            <span class="tool-tag">John the Ripper</span>
+                            <span class="tool-tag">Hashcat</span>
+                            <span class="tool-tag">Hydra</span>
+                            <span class="tool-tag">Medusa</span>
+                            <span class="tool-tag">CrackMapExec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vm-console glass-panel" id="vm-console" style="display: none;">
+                <div class="console-resize-handle"></div>
+                <div class="console-header">
+                    <h3>VM Console</h3>
+                    <div class="console-controls">
+                        <button onclick="toggleFullscreen()" class="console-btn">
+                            <span>⛶</span> Fullscreen
+                        </button>
+                        <button onclick="openTerminal()" class="console-btn">
+                            <span>💻</span> Terminal
+                        </button>
+                        <button onclick="takeScreenshot()" class="console-btn">
+                            <span>📸</span> Screenshot
+                        </button>
+                    </div>
+                </div>
+                <div class="console-screen">
+                    <div class="boot-sequence" id="boot-sequence">
+                        <div class="boot-line">Starting Kali Linux...</div>
+                        <div class="boot-line">Loading kernel modules...</div>
+                        <div class="boot-line">Initializing network interfaces...</div>
+                        <div class="boot-line">Starting X11 display manager...</div>
+                        <div class="boot-line">Kali Linux ready!</div>
+                    </div>
+                    <div class="desktop-environment" id="desktop" style="display: none;">
+                        <div class="desktop-wallpaper">
+                            <!-- Kali Linux XFCE Panel -->
+                            <div class="kali-panel">
+                                <div class="kali-menu">
+                                    <span>🐉</span>
+                                    <span>Applications</span>
+                                </div>
+                                <div class="kali-system-tray">
+                                    <span>🔊</span>
+                                    <span>🔋</span>
+                                    <span>🔒</span>
+                                    <span>12:34 PM</span>
+                                </div>
+                            </div>
+                            
+                            <div class="desktop-icons">
+                                <div class="desktop-icon" onclick="launchApp('terminal')">
+                                    <div class="icon">💻</div>
+                                    <span>Terminal</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('burpsuite')">
+                                    <div class="icon">🔍</div>
+                                    <span>Burp Suite</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('metasploit')">
+                                    <div class="icon">💥</div>
+                                    <span>Metasploit</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('wireshark')">
+                                    <div class="icon">🦈</div>
+                                    <span>Wireshark</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('nmap')">
+                                    <div class="icon">🗺️</div>
+                                    <span>Nmap</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('john')">
+                                    <div class="icon">🔐</div>
+                                    <span>John</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('hashcat')">
+                                    <div class="icon">🔑</div>
+                                    <span>Hashcat</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('sqlmap')">
+                                    <div class="icon">📊</div>
+                                    <span>SQLMap</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('gobuster')">
+                                    <div class="icon">📁</div>
+                                    <span>Gobuster</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('hydra')">
+                                    <div class="icon">🐲</div>
+                                    <span>Hydra</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('nikto')">
+                                    <div class="icon">🔎</div>
+                                    <span>Nikto</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('files')">
+                                    <div class="icon">📂</div>
+                                    <span>Files</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="tor-browser.js"></script>
+    <script>
+        let vmRunning = false;
+        let bootTimeout;
+
+        function startVM() {
+            const startBtn = document.getElementById('start-vm');
+            const stopBtn = document.getElementById('stop-vm');
+            const restartBtn = document.getElementById('restart-vm');
+            const status = document.getElementById('vm-status');
+            const console = document.getElementById('vm-console');
+            
+            startBtn.disabled = true;
+            startBtn.innerHTML = '<span class="btn-icon">⏳</span>Starting...';
+            
+            status.innerHTML = '<span class="status-indicator starting"></span><span class="status-text">Starting...</span>';
+            console.style.display = 'block';
+            
+            // Simulate boot sequence
+            const bootLines = document.querySelectorAll('.boot-line');
+            bootLines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.opacity = '1';
+                    line.style.animation = 'typewriter 0.5s ease-in-out';
+                }, index * 1000);
+            });
+            
+            bootTimeout = setTimeout(() => {
+                document.getElementById('boot-sequence').style.display = 'none';
+                document.getElementById('desktop').style.display = 'block';
+                
+                vmRunning = true;
+                startBtn.style.display = 'none';
+                stopBtn.disabled = false;
+                restartBtn.disabled = false;
+                status.innerHTML = '<span class="status-indicator online"></span><span class="status-text">Running</span>';
+                
+                // Update user progress
+                updateVMProgress('kali');
+            }, 5000);
+        }
+
+        function stopVM() {
+            const startBtn = document.getElementById('start-vm');
+            const stopBtn = document.getElementById('stop-vm');
+            const restartBtn = document.getElementById('restart-vm');
+            const status = document.getElementById('vm-status');
+            const console = document.getElementById('vm-console');
+            
+            vmRunning = false;
+            startBtn.style.display = 'inline-flex';
+            startBtn.disabled = false;
+            startBtn.innerHTML = '<span class="btn-icon">▶️</span>Start VM';
+            stopBtn.disabled = true;
+            restartBtn.disabled = true;
+            
+            status.innerHTML = '<span class="status-indicator offline"></span><span class="status-text">Offline</span>';
+            console.style.display = 'none';
+            
+            // Reset boot sequence
+            const bootLines = document.querySelectorAll('.boot-line');
+            bootLines.forEach(line => {
+                line.style.opacity = '0';
+            });
+            document.getElementById('boot-sequence').style.display = 'block';
+            document.getElementById('desktop').style.display = 'none';
+        }
+
+        function restartVM() {
+            stopVM();
+            setTimeout(() => startVM(), 1000);
+        }
+
+        function launchApp(app) {
+            switch(app) {
+                case 'terminal':
+                    window.open('lab.html', '_blank');
+                    break;
+                case 'burpsuite':
+                    alert('🔍 Burp Suite Community Edition\n\nLaunching web application security testing suite...\n\nFeatures:\n• Proxy and Spider\n• Scanner (Pro only)\n• Intruder\n• Repeater\n• Sequencer');
+                    break;
+                case 'metasploit':
+                    alert('💥 Metasploit Framework\n\nInitializing exploitation framework...\n\nModules loaded:\n• 2,000+ exploits\n• 500+ payloads\n• 300+ auxiliary modules\n• 50+ post-exploitation modules');
+                    break;
+                case 'wireshark':
+                    alert('🦈 Wireshark Network Analyzer\n\nStarting packet capture interface...\n\nSupported protocols:\n• HTTP/HTTPS\n• TCP/UDP\n• DNS\n• SSH/Telnet\n• And 3,000+ more');
+                    break;
+            }
+        }
+
+        function toggleFullscreen() {
+            const console = document.getElementById('vm-console');
+            console.classList.toggle('fullscreen');
+        }
+
+        function openTerminal() {
+            window.open('lab.html', '_blank');
+        }
+
+        function takeScreenshot() {
+            if (!vmRunning) {
+                alert('⚠️ VM must be running to take screenshots');
+                return;
+            }
+            
+            // Simulate screenshot functionality
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1024;
+            canvas.height = 768;
+            
+            // Create a simple screenshot representation
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff41';
+            ctx.font = '16px monospace';
+            ctx.fillText('Kali Linux Desktop Screenshot', 50, 50);
+            ctx.fillText('Timestamp: ' + new Date().toLocaleString(), 50, 80);
+            
+            // Download the screenshot
+            const link = document.createElement('a');
+            link.download = `kali-screenshot-${Date.now()}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+            
+            // Show notification
+            showNotification('📸 Screenshot saved successfully!', 'success');
+        }
+        
+        function updateVMProgress(vmType) {
+            let progress = JSON.parse(localStorage.getItem('vmProgress') || '{}');
+            if (!progress[vmType]) {
+                progress[vmType] = {
+                    launched: true,
+                    launchCount: 0,
+                    totalTime: 0
+                };
+            }
+            progress[vmType].launchCount++;
+            progress[vmType].lastLaunched = new Date().toISOString();
+            localStorage.setItem('vmProgress', JSON.stringify(progress));
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>Interactive Cybersecurity Training Platform</p>
+                    <p>Educational purposes only</p>
+                    <p>All simulated activities</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

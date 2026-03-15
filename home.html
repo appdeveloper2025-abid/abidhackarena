@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbidHack Arena - White Hat Hacking Training Platform</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#00ff41">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="home-neumorphism.css">
+    <link rel="stylesheet" href="tor-browser.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link rel="stylesheet" href="mobile-responsive.css">
+    <link rel="stylesheet" href="navbar-mobile-fix.css">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            
+            <!-- CPU Performance Monitor with Line Graphs -->
+            <div class="nav-cpu-monitor">
+                <div class="cpu-graph-item">
+                    <span class="graph-label">CPU</span>
+                    <canvas id="cpu-graph" width="80" height="30"></canvas>
+                    <span class="graph-value" id="cpu-val">0%</span>
+                </div>
+                <div class="cpu-graph-item">
+                    <span class="graph-label">RAM</span>
+                    <canvas id="ram-graph" width="80" height="30"></canvas>
+                    <span class="graph-value" id="ram-val">0%</span>
+                </div>
+                <div class="cpu-graph-item">
+                    <span class="graph-label">NET</span>
+                    <canvas id="net-graph" width="80" height="30"></canvas>
+                    <span class="graph-value" id="net-val">0%</span>
+                </div>
+            </div>
+            
+            <div class="nav-links" id="nav-links">
+                <a href="#home">Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">Labs</a>
+                    <div class="dropdown-menu">
+                        <a href="practical-labs.html">Virtual Machines</a>
+                        <a href="practical-labs.html">Network Labs</a>
+                        <a href="practical-labs.html">Forensics Lab</a>
+                        <a href="lab.html">Terminal Lab</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">Challenges</a>
+                    <div class="dropdown-menu">
+                        <a href="challenges.html">CTF Challenges</a>
+                        <a href="challenges.html">Web Security</a>
+                        <a href="challenges.html">Cryptography</a>
+                        <a href="challenges.html">OSINT</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">Resources</a>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="leaderboard.html">Leaderboard</a>
+                        <a href="profile.html">Profile</a>
+                        <a href="about.html">About</a>
+                    </div>
+                </div>
+                <a href="#auth" class="login-btn" onclick="showAuthSection(event)">Login / Sign Up</a>
+                <div class="nav-dropdown profile-dropdown">
+                    <a href="profile.html" class="nav-profile-avatar" id="navProfileAvatar">
+                        <img id="navProfileImage" src="" alt="Profile" style="display: none;">
+                        <span id="navProfileInitial">H</span>
+                    </a>
+                    <div class="dropdown-menu profile-menu">
+                        <a href="profile.html">⚙️ Settings</a>
+                        <a href="#" onclick="handleLogout(); return false;">🚪 Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <!-- Hero Search Section -->
+    <div class="hero-search-section">
+        <div class="container">
+            <div class="hero-search-box">
+                <span class="search-icon">🧅</span>
+                <input type="text" id="hero-search-input" placeholder="Search the Dark Web with Tor..." onkeypress="if(event.key==='Enter') heroTorSearch()">
+                <button onclick="heroTorSearch()" class="search-btn">
+                    <span>🔍</span> Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="binary-stream" id="binaryStream"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="logo.png" alt="AbidHack Arena Logo" class="logo-image">
+            </div>
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="typing-text" data-text="Welcome to AbidHack Arena"></span>
+                    <span class="cursor">|</span>
+                </h1>
+                <p class="hero-subtitle">White Hat Hacking Training Platform</p>
+                <p class="hero-description">Master ethical hacking and cybersecurity through hands-on simulated labs, CTF challenges, and interactive terminal experiences. Learn penetration testing legally and safely.</p>
+                <button class="cta-button" onclick="location.href='dashboard.html'">
+                    <span>Start Hacking</span>
+                    <div class="button-glow"></div>
+                </button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="terminal-preview">
+                <div class="terminal-body">
+                    <!-- Radar Scanner in Terminal -->
+                    <div class="terminal-radar">
+                        <div class="radar-circle-inner" style="width: 100%; height: 100%;"></div>
+                        <div class="radar-circle-inner" style="width: 90%; height: 90%;"></div>
+                        <div class="radar-circle-inner" style="width: 80%; height: 80%;"></div>
+                        <div class="radar-circle-inner" style="width: 70%; height: 70%;"></div>
+                        <div class="radar-circle-inner" style="width: 60%; height: 60%;"></div>
+                        <div class="radar-circle-inner" style="width: 50%; height: 50%;"></div>
+                        <div class="radar-circle-inner" style="width: 40%; height: 40%;"></div>
+                        <div class="radar-circle-inner" style="width: 30%; height: 30%;"></div>
+                        <div class="radar-circle-inner" style="width: 20%; height: 20%;"></div>
+                        <div class="radar-circle-inner" style="width: 10%; height: 10%;"></div>
+                        <div class="radar-line-inner"></div>
+                        <div class="radar-line-inner" style="transform: translate(-50%, 0) rotate(45deg);"></div>
+                        <div class="radar-line-inner" style="transform: translate(-50%, 0) rotate(90deg);"></div>
+                        <div class="radar-line-inner" style="transform: translate(-50%, 0) rotate(135deg);"></div>
+                        <div class="radar-target" style="top: 25%; left: 35%;">
+                            <div class="target-dot" style="background: #00ff41;"></div>
+                            <div class="target-label">Server-01</div>
+                        </div>
+                        <div class="radar-target" style="top: 55%; left: 65%;">
+                            <div class="target-dot" style="background: #0066ff;"></div>
+                            <div class="target-label">Database</div>
+                        </div>
+                        <div class="radar-target" style="top: 40%; left: 50%;">
+                            <div class="target-dot" style="background: #ff00ff;"></div>
+                            <div class="target-label">Firewall</div>
+                        </div>
+                        <div class="radar-target" style="top: 70%; left: 30%;">
+                            <div class="target-dot" style="background: #ffaa00;"></div>
+                            <div class="target-label">Router</div>
+                        </div>
+                        <div class="radar-target" style="top: 35%; left: 70%;">
+                            <div class="target-dot" style="background: #ff0066;"></div>
+                            <div class="target-label">Client-PC</div>
+                        </div>
+                        <div class="radar-target" style="top: 60%; left: 45%;">
+                            <div class="target-dot" style="background: #00ffff;"></div>
+                            <div class="target-label">Gateway</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>Virtual Machines</h3>
+                    <p>Multiple OS environments: Kali Linux, Parrot OS, Windows Server, Ubuntu</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏴‍☠️</div>
+                    <h3>CTF Challenges</h3>
+                    <p>Solve Capture The Flag challenges across multiple cybersecurity domains</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>Advanced Tools</h3>
+                    <p>Metasploit, Burp Suite, Wireshark, John the Ripper, Hashcat</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with XP points and skill rankings</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Network Labs</h3>
+                    <p>Simulated enterprise networks with vulnerable services and applications</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Forensics Lab</h3>
+                    <p>Digital forensics scenarios with memory dumps and disk images</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏭</div>
+                    <h3>Industrial Security</h3>
+                    <p>SCADA/ICS security testing in simulated industrial environments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Security</h3>
+                    <p>Android and iOS application security testing and analysis</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Cloud Security</h3>
+                    <p>AWS, Azure, GCP security assessment and penetration testing</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered Labs</h3>
+                    <p>Machine learning assisted vulnerability detection and analysis</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Live performance metrics, threat intelligence, and security dashboards</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Certification Prep</h3>
+                    <p>OSCP, CEH, CISSP, and other cybersecurity certification training</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About AbidHack Arena</h2>
+            <div class="about-content">
+                <p>AbidHack Arena is a white hat hacking training platform designed by Abid Mehmood for ethical hackers, security professionals, and cybersecurity enthusiasts. Our simulated environment provides hands-on experience with penetration testing tools and techniques in a safe, legal, and controlled setting. Learn ethical hacking the right way.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Advanced Tools</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Lab Scenarios</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Lab Access</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>White Hat Hacking Training Platform</p>
+                    <p>Ethical hacking education only</p>
+                    <p>All activities are simulated and legal</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="optimizer.js"></script>
+    <script src="tor-browser.js"></script>
+    <script src="profile-loader.js"></script>
+    <script>
+        // CPU Monitor with Trading Line Graphs
+        const cpuData = [];
+        const ramData = [];
+        const netData = [];
+        const maxDataPoints = 40;
+        
+        const cpuCanvas = document.getElementById('cpu-graph');
+        const ramCanvas = document.getElementById('ram-graph');
+        const netCanvas = document.getElementById('net-graph');
+        
+        const cpuCtx = cpuCanvas.getContext('2d');
+        const ramCtx = ramCanvas.getContext('2d');
+        const netCtx = netCanvas.getContext('2d');
+        
+        function drawGraph(ctx, data, color, gradient) {
+            ctx.clearRect(0, 0, 80, 30);
+            
+            // Draw gradient background
+            const bgGradient = ctx.createLinearGradient(0, 0, 0, 30);
+            bgGradient.addColorStop(0, gradient[0]);
+            bgGradient.addColorStop(1, gradient[1]);
+            
+            ctx.beginPath();
+            ctx.moveTo(0, 30);
+            
+            for (let i = 0; i < data.length; i++) {
+                const x = (i / (maxDataPoints - 1)) * 80;
+                const y = 30 - (data[i] / 100) * 30;
+                ctx.lineTo(x, y);
+            }
+            
+            ctx.lineTo(80, 30);
+            ctx.closePath();
+            ctx.fillStyle = bgGradient;
+            ctx.fill();
+            
+            // Draw line - thinner
+            ctx.beginPath();
+            for (let i = 0; i < data.length; i++) {
+                const x = (i / (maxDataPoints - 1)) * 80;
+                const y = 30 - (data[i] / 100) * 30;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            
+            // Draw glow - reduced
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = color;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+        
+        function updateGraphs() {
+            const cpu = Math.floor(Math.random() * 40) + 30;
+            const ram = Math.floor(Math.random() * 30) + 40;
+            const net = Math.floor(Math.random() * 50) + 20;
+            
+            cpuData.push(cpu);
+            ramData.push(ram);
+            netData.push(net);
+            
+            if (cpuData.length > maxDataPoints) cpuData.shift();
+            if (ramData.length > maxDataPoints) ramData.shift();
+            if (netData.length > maxDataPoints) netData.shift();
+            
+            drawGraph(cpuCtx, cpuData, '#00ff41', ['rgba(0, 255, 65, 0.3)', 'rgba(0, 255, 65, 0.05)']);
+            drawGraph(ramCtx, ramData, '#0066ff', ['rgba(0, 102, 255, 0.3)', 'rgba(0, 102, 255, 0.05)']);
+            drawGraph(netCtx, netData, '#ff00ff', ['rgba(255, 0, 255, 0.3)', 'rgba(255, 0, 255, 0.05)']);
+            
+            document.getElementById('cpu-val').textContent = cpu + '%';
+            document.getElementById('ram-val').textContent = ram + '%';
+            document.getElementById('net-val').textContent = net + '%';
+        }
+        
+        setInterval(updateGraphs, 500);
+        updateGraphs();
+
+        // Binary Stream Animation
+        const binaryContainer = document.getElementById('binaryStream');
+        const heroLogo = document.querySelector('.hero-logo');
+        
+        function createBinary() {
+            const binary = document.createElement('div');
+            binary.className = 'binary-particle';
+            binary.textContent = Math.random() > 0.5 ? '1' : '0';
+            
+            const logoRect = heroLogo.getBoundingClientRect();
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 400 + Math.random() * 200;
+            
+            binary.style.left = logoRect.left + logoRect.width / 2 + 'px';
+            binary.style.top = logoRect.top + logoRect.height / 2 + 'px';
+            binary.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+            binary.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+            
+            binaryContainer.appendChild(binary);
+            
+            setTimeout(() => binary.remove(), 3000);
+        }
+        
+        setInterval(createBinary, 200);
+    </script>
+</body>
+</html>
+
+<script>
+document.querySelectorAll('.feature-card').forEach((card, index) => {
+    const pages = ['practical-labs.html', 'challenges.html', 'lab.html', 'dashboard.html', 'practical-labs.html', 'practical-labs.html', 'practical-labs.html', 'practical-labs.html', 'practical-labs.html', 'practical-labs.html', 'dashboard.html', 'dashboard.html'];
+    card.onclick = () => location.href = pages[index];
+});
+</script>
+
+    <script>
+        // Auth handlers for index page
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const users = JSON.parse(localStorage.getItem('abidhack_users') || '{}');
+            const user = users[email];
+            
+            if (user && user.password === password) {
+                localStorage.setItem('abidhack_user', JSON.stringify(user));
+                localStorage.setItem('abidhack_logged_in', 'true');
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Invalid credentials!');
+            }
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            
+            const users = JSON.parse(localStorage.getItem('abidhack_users') || '{}');
+            
+            if (users[email]) {
+                alert('Email already registered!');
+                return;
+            }
+            
+            users[email] = {
+                username, email, password,
+                xp: 0, 
+                level: 1, 
+                completedLabs: 0, 
+                solvedChallenges: 0,
+                toolsUsed: 0,
+                timeSpent: 0,
+                badges: ['🎯 First Steps'], 
+                joinDate: new Date().toISOString(),
+                skills: [], 
+                bio: 'Ethical hacker in training',
+                achievements: []
+            };
+            
+            localStorage.setItem('abidhack_users', JSON.stringify(users));
+            localStorage.setItem('abidhack_user', JSON.stringify(users[email]));
+            localStorage.setItem('abidhack_logged_in', 'true');
+            window.location.href = 'dashboard.html';
+        }
+
+        function showAuthSection(event) {
+            event.preventDefault();
+            document.querySelector('.auth-split-container').parentElement.style.display = 'block';
+            document.querySelector('.auth-split-container').parentElement.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Load navbar profile
+        window.addEventListener('DOMContentLoaded', function() {
+            const loggedIn = localStorage.getItem('abidhack_logged_in') === 'true';
+            const loginBtn = document.querySelector('.login-btn');
+            const profileDropdown = document.querySelector('.profile-dropdown');
+            
+            if (loggedIn && profileDropdown) {
+                if (loginBtn) loginBtn.style.display = 'none';
+                profileDropdown.style.display = 'block';
+                
+                const userData = JSON.parse(localStorage.getItem('abidhack_user') || '{}');
+                const savedPhoto = localStorage.getItem('profile_photo');
+                
+                if (savedPhoto) {
+                    document.getElementById('navProfileImage').src = savedPhoto;
+                    document.getElementById('navProfileImage').style.display = 'block';
+                    document.getElementById('navProfileInitial').style.display = 'none';
+                } else {
+                    document.getElementById('navProfileInitial').textContent = (userData.username || 'H').charAt(0).toUpperCase();
+                }
+            }
+        });
+
+        function handleLogout() {
+            localStorage.removeItem('abidhack_logged_in');
+            localStorage.removeItem('abidhack_user');
+            window.location.href = 'home.html';
+        }
+    </script>

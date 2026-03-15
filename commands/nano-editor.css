@@ -1,0 +1,125 @@
+/* Nano Editor Styles */
+.nano-editor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #00ff41;
+    font-family: 'Fira Code', monospace;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.nano-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #333;
+    font-size: 14px;
+}
+
+.nano-title {
+    color: #00ff41;
+    font-weight: bold;
+}
+
+.nano-status {
+    font-size: 12px;
+}
+
+.nano-status.modified {
+    color: #ff6b6b;
+}
+
+.nano-status.saved {
+    color: #51cf66;
+}
+
+.nano-content {
+    flex: 1;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.nano-textarea {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff41;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    resize: none;
+    tab-size: 4;
+}
+
+.nano-textarea:focus {
+    outline: none;
+}
+
+.nano-footer {
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+    padding: 8px 10px;
+    position: relative;
+}
+
+.nano-shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 12px;
+    color: #888;
+}
+
+.nano-shortcuts span {
+    color: #00ff41;
+}
+
+.nano-message {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #00ff41;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .nano-header {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+    
+    .nano-textarea {
+        font-size: 12px;
+        padding: 5px;
+    }
+    
+    .nano-shortcuts {
+        font-size: 10px;
+        gap: 10px;
+    }
+    
+    .nano-footer {
+        padding: 5px 8px;
+    }
+}

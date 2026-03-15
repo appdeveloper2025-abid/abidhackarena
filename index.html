@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbidHack Arena - White Hat Hacker Login</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body { padding: 0 !important; margin: 0; overflow: hidden; background: #e0e5ec; }
+        .matrix-bg { background: linear-gradient(135deg, #e0e5ec 0%, #d4d9e0 100%); }
+        .auth-slider-container { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #e0e5ec; }
+        .auth-slider-card { position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        .login-card { transform: translateX(0); z-index: 2; }
+        .signup-card { transform: translateX(100%); z-index: 1; }
+        .login-card.slide-out { transform: translateX(-100%); }
+        .signup-card.slide-in { transform: translateX(0); z-index: 2; }
+        .auth-slider-card .auth-card { max-width: 350px; width: 90%; }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <div class="auth-slider-container">
+        <div class="auth-slider-card login-card" id="loginCard">
+            <div class="auth-card glass-panel">
+                <div class="auth-header">
+                    <img src="logo.png" alt="AbidHack Arena" class="auth-logo">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to continue ethical hacking</p>
+                </div>
+                <form class="auth-form" id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign In</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="slideToSignup(); return false;">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-slider-card signup-card" id="signupCard">
+            <div class="auth-card glass-panel">
+                <div class="auth-header">
+                    <img src="logo.png" alt="AbidHack Arena" class="auth-logo">
+                    <h1>Join Arena</h1>
+                    <p>Create your white hat hacker account</p>
+                </div>
+                <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="signupUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="signupPassword" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" onclick="slideToLogin(); return false;">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        function slideToSignup() {
+            document.getElementById('loginCard').classList.add('slide-out');
+            document.getElementById('signupCard').classList.add('slide-in');
+        }
+
+        function slideToLogin() {
+            document.getElementById('loginCard').classList.remove('slide-out');
+            document.getElementById('signupCard').classList.remove('slide-in');
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const users = JSON.parse(localStorage.getItem('abidhack_users') || '{}');
+            const user = users[email];
+            
+            if (user && user.password === password) {
+                localStorage.setItem('abidhack_user', JSON.stringify(user));
+                localStorage.setItem('abidhack_logged_in', 'true');
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Invalid credentials!');
+            }
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            
+            const users = JSON.parse(localStorage.getItem('abidhack_users') || '{}');
+            
+            if (users[email]) {
+                alert('Email already registered!');
+                return;
+            }
+            
+            users[email] = {
+                username, email, password,
+                xp: 0, level: 1, completedLabs: 0, solvedChallenges: 0,
+                toolsUsed: 0, timeSpent: 0,
+                badges: ['🎯 First Steps'], joinDate: new Date().toISOString(),
+                skills: [], bio: 'White hat hacker in training', achievements: []
+            };
+            
+            localStorage.setItem('abidhack_users', JSON.stringify(users));
+            localStorage.setItem('abidhack_user', JSON.stringify(users[email]));
+            localStorage.setItem('abidhack_logged_in', 'true');
+            window.location.href = 'dashboard.html';
+        }
+
+        if (localStorage.getItem('abidhack_logged_in') === 'true') {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>

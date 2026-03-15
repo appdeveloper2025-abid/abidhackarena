@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - AbidHack Arena</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="pages-neumorphism.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <style>
+        .about-hero {
+            background: var(--neuro-bg);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+        .about-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            box-shadow: 15px 15px 30px var(--neuro-shadow-dark),
+                        -15px -15px 30px var(--neuro-shadow-light);
+            object-fit: cover;
+            background: var(--neuro-bg);
+            padding: 1rem;
+        }
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .about-section {
+            background: var(--neuro-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 10px 10px 20px var(--neuro-shadow-dark),
+                        -10px -10px 20px var(--neuro-shadow-light);
+            margin-bottom: 2rem;
+        }
+        .about-section h2 {
+            color: var(--neuro-text-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .about-section p, .about-section ul {
+            color: var(--neuro-text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .about-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .about-section ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .about-section ul li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #0066ff;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="home.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="lab.html">Labs</a>
+                <a href="challenges.html">Challenges</a>
+                <a href="about.html" class="active">About</a>
+                <a href="profile.html" class="nav-profile-avatar" id="navProfileAvatar" style="display: none;">
+                    <img id="navProfileImage" src="" alt="Profile" style="display: none;">
+                    <span id="navProfileInitial">H</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <img src="logo.png" alt="Abid Mehmood" class="about-photo">
+        <h1 style="color: var(--neuro-text-primary); font-size: 2.5rem; margin-bottom: 0.5rem;">Abid Mehmood</h1>
+        <p style="color: var(--neuro-text-secondary); font-size: 1.3rem;">White Hat Hacker | Web Designer | Cybersecurity Researcher</p>
+    </section>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2>About Me</h2>
+            <p>I am Abid Mehmood, a passionate BS Computer Science student with a deep interest in Cyber Space Security and ethical hacking. As an aspiring white hat hacker, I believe in using technology to protect and secure digital systems rather than exploit them.</p>
+            <p>My journey in cybersecurity is driven by curiosity and a commitment to learning ethical hacking techniques that can help organizations defend against cyber threats. I created AbidHack Arena as a platform to share knowledge and provide hands-on training for fellow white hat hackers.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>My Skills & Interests</h2>
+            <ul>
+                <li>White Hat Hacking & Ethical Penetration Testing</li>
+                <li>Web Design & Development</li>
+                <li>Cybersecurity Research & Analysis</li>
+                <li>Network Security & Vulnerability Assessment</li>
+                <li>Digital Forensics & Incident Response</li>
+                <li>Secure Coding Practices</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>About AbidHack Arena</h2>
+            <p>AbidHack Arena is a white hat hacking training platform I developed to provide ethical hackers with a safe, legal environment to learn and practice cybersecurity skills. The platform features:</p>
+            <ul>
+                <li>Interactive Virtual Machines (Kali Linux, Parrot OS, Ubuntu, Windows)</li>
+                <li>150+ Ethical Hacking Tools & Utilities</li>
+                <li>CTF Challenges across Web, Network, Crypto, and OSINT</li>
+                <li>Real-time Terminal with 50+ Commands</li>
+                <li>Progress Tracking with XP and Achievement System</li>
+                <li>Simulated Network Environments for Safe Testing</li>
+                <li>Digital Forensics Lab Scenarios</li>
+                <li>Responsive Design for PC and Mobile Devices</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>Platform Features</h2>
+            <p>This platform is built with modern web technologies and designed with neumorphism UI for a clean, professional look:</p>
+            <ul>
+                <li>Pure HTML5, CSS3, and Vanilla JavaScript</li>
+                <li>No backend required - runs entirely in browser</li>
+                <li>Local storage for user progress and data</li>
+                <li>Fully responsive neumorphism design</li>
+                <li>Interactive terminal with command execution</li>
+                <li>Real-time radar visualization</li>
+                <li>Binary stream animations</li>
+                <li>Dark web Tor browser simulation</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>Contact Information</h2>
+            <p><strong>Email:</strong> <a href="mailto:abidbusiness2025@gmail.com" style="color: #0066ff;">abidbusiness2025@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+923029382306" style="color: #0066ff;">03029382306</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/923029382306" style="color: #0066ff;">03029382306</a></p>
+        </div>
+
+        <div class="about-section">
+            <h2>Mission Statement</h2>
+            <p>My mission is to promote ethical hacking education and help aspiring white hat hackers develop the skills needed to protect digital infrastructure. Through AbidHack Arena, I aim to create a community of responsible security professionals who use their knowledge for good.</p>
+            <p style="margin-top: 1rem; font-style: italic; color: #0066ff;">"With great power comes great responsibility. Let's use our hacking skills to make the digital world safer."</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>White Hat Hacking Training Platform</p>
+                    <p>Ethical hacking education only</p>
+                    <p>All activities are simulated and legal</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="profile-loader.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const loggedIn = localStorage.getItem('abidhack_logged_in') === 'true';
+            const navAvatar = document.getElementById('navProfileAvatar');
+            
+            if (loggedIn) {
+                navAvatar.style.display = 'flex';
+                const userData = JSON.parse(localStorage.getItem('abidhack_user') || '{}');
+                const savedPhoto = localStorage.getItem('profile_photo');
+                
+                if (savedPhoto) {
+                    document.getElementById('navProfileImage').src = savedPhoto;
+                    document.getElementById('navProfileImage').style.display = 'block';
+                    document.getElementById('navProfileInitial').style.display = 'none';
+                } else {
+                    document.getElementById('navProfileInitial').textContent = (userData.username || 'H').charAt(0).toUpperCase();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

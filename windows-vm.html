@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Server 2019 VM - AbidHack Arena</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#00ff41">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="vm-neumorphism.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html" class="home-btn">🏠 Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="lab.html">Terminal</a>
+                <a href="challenges.html">Challenges</a>
+                <a href="practical-labs.html">Labs</a>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <div class="vm-container">
+        <div class="vm-header">
+            <div class="vm-title">
+                <div class="vm-icon-large">🪟</div>
+                <div class="vm-info">
+                    <h1>Windows Server 2019</h1>
+                    <p>Enterprise Target Environment</p>
+                    <div class="vm-status" id="vm-status">
+                        <span class="status-indicator offline"></span>
+                        <span class="status-text">Offline</span>
+                    </div>
+                </div>
+            </div>
+            <div class="vm-controls">
+                <button class="vm-btn start-btn" id="start-vm" onclick="startVM()">
+                    <span class="btn-icon">▶️</span>
+                    Start VM
+                </button>
+                <button class="vm-btn stop-btn" id="stop-vm" onclick="stopVM()" disabled>
+                    <span class="btn-icon">⏹️</span>
+                    Stop VM
+                </button>
+                <button class="vm-btn restart-btn" id="restart-vm" onclick="restartVM()" disabled>
+                    <span class="btn-icon">🔄</span>
+                    Restart
+                </button>
+            </div>
+        </div>
+
+        <div class="vm-content">
+            <div class="vm-specs-panel glass-panel">
+                <h3>System Specifications</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">CPU</span>
+                        <span class="spec-value">4 vCPUs</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">RAM</span>
+                        <span class="spec-value">8 GB</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Storage</span>
+                        <span class="spec-value">40 GB SSD</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Network</span>
+                        <span class="spec-value">Domain Network</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">OS Version</span>
+                        <span class="spec-value">Windows Server 2019</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Edition</span>
+                        <span class="spec-value">Standard</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vm-tools-panel glass-panel">
+                <h3>Installed Services & Features</h3>
+                <div class="tools-categories">
+                    <div class="tool-category">
+                        <h4>🌐 Web Services</h4>
+                        <div class="tool-list">
+                            <span class="tool-tag">IIS 10.0</span>
+                            <span class="tool-tag">ASP.NET</span>
+                            <span class="tool-tag">PHP</span>
+                            <span class="tool-tag">FTP Server</span>
+                            <span class="tool-tag">WebDAV</span>
+                        </div>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🏢 Active Directory</h4>
+                        <div class="tool-list">
+                            <span class="tool-tag">Domain Controller</span>
+                            <span class="tool-tag">DNS Server</span>
+                            <span class="tool-tag">DHCP Server</span>
+                            <span class="tool-tag">Group Policy</span>
+                            <span class="tool-tag">Certificate Services</span>
+                        </div>
+                    </div>
+                    <div class="tool-category">
+                        <h4>💾 Database Services</h4>
+                        <div class="tool-list">
+                            <span class="tool-tag">SQL Server 2019</span>
+                            <span class="tool-tag">MySQL</span>
+                            <span class="tool-tag">PostgreSQL</span>
+                            <span class="tool-tag">MongoDB</span>
+                            <span class="tool-tag">Redis</span>
+                        </div>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🔧 Management Tools</h4>
+                        <div class="tool-list">
+                            <span class="tool-tag">PowerShell 5.1</span>
+                            <span class="tool-tag">Server Manager</span>
+                            <span class="tool-tag">Event Viewer</span>
+                            <span class="tool-tag">Performance Monitor</span>
+                            <span class="tool-tag">Registry Editor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vm-console glass-panel" id="vm-console" style="display: none;">
+                <div class="console-header">
+                    <h3>VM Console</h3>
+                    <div class="console-controls">
+                        <button onclick="toggleFullscreen()" class="console-btn">⛶ Fullscreen</button>
+                        <button onclick="openRDP()" class="console-btn">🖥️ RDP</button>
+                    </div>
+                </div>
+                <div class="console-screen">
+                    <div class="boot-sequence" id="boot-sequence">
+                        <div class="boot-line">Starting Windows Server 2019...</div>
+                        <div class="boot-line">Loading system services...</div>
+                        <div class="boot-line">Initializing Active Directory...</div>
+                        <div class="boot-line">Starting IIS web server...</div>
+                        <div class="boot-line">Windows Server ready!</div>
+                    </div>
+                    <div class="desktop-environment windows-theme" id="desktop" style="display: none;">
+                        <div class="windows-desktop">
+                            <div class="desktop-icons">
+                                <div class="desktop-icon" onclick="launchApp('cmd')">
+                                    <div class="icon">⚫</div>
+                                    <span>Command Prompt</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('powershell')">
+                                    <div class="icon">💙</div>
+                                    <span>PowerShell</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('iis')">
+                                    <div class="icon">🌐</div>
+                                    <span>IIS Manager</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('aduc')">
+                                    <div class="icon">👥</div>
+                                    <span>AD Users</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('server-manager')">
+                                    <div class="icon">🛠️</div>
+                                    <span>Server Manager</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('sql-server')">
+                                    <div class="icon">📊</div>
+                                    <span>SQL Server</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('event-viewer')">
+                                    <div class="icon">📄</div>
+                                    <span>Event Viewer</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('registry')">
+                                    <div class="icon">🗃️</div>
+                                    <span>Registry Editor</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('perfmon')">
+                                    <div class="icon">📈</div>
+                                    <span>Performance Monitor</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('dns')">
+                                    <div class="icon">🌐</div>
+                                    <span>DNS Manager</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('dhcp')">
+                                    <div class="icon">📶</div>
+                                    <span>DHCP</span>
+                                </div>
+                                <div class="desktop-icon" onclick="launchApp('explorer')">
+                                    <div class="icon">📁</div>
+                                    <span>File Explorer</span>
+                                </div>
+                            </div>
+                            <div class="windows-taskbar">
+                                <div class="start-button">
+                                    <span>🪟</span>
+                                    <span>Start</span>
+                                </div>
+                                <div class="taskbar-apps">
+                                    <div class="taskbar-app" title="File Explorer">📁</div>
+                                    <div class="taskbar-app" title="Command Prompt">⚫</div>
+                                    <div class="taskbar-app" title="PowerShell">💙</div>
+                                    <div class="taskbar-app" title="Server Manager">🛠️</div>
+                                </div>
+                                <div class="taskbar-system">
+                                    <div class="taskbar-notifications">
+                                        <div class="notification-icon" title="Network">📶</div>
+                                        <div class="notification-icon" title="Volume">🔊</div>
+                                        <div class="notification-icon" title="Action Center">🔔</div>
+                                    </div>
+                                    <div class="taskbar-time">
+                                        12:34 PM<br>
+                                        3/15/2024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script>
+        let vmRunning = false;
+        let bootTimeout;
+
+        function startVM() {
+            const startBtn = document.getElementById('start-vm');
+            const stopBtn = document.getElementById('stop-vm');
+            const restartBtn = document.getElementById('restart-vm');
+            const status = document.getElementById('vm-status');
+            const console = document.getElementById('vm-console');
+            
+            startBtn.disabled = true;
+            startBtn.innerHTML = '<span class="btn-icon">⏳</span>Starting...';
+            
+            status.innerHTML = '<span class="status-indicator starting"></span><span class="status-text">Starting...</span>';
+            console.style.display = 'block';
+            
+            const bootLines = document.querySelectorAll('.boot-line');
+            bootLines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.opacity = '1';
+                    line.style.animation = 'typewriter 0.5s ease-in-out';
+                }, index * 1200);
+            });
+            
+            bootTimeout = setTimeout(() => {
+                document.getElementById('boot-sequence').style.display = 'none';
+                document.getElementById('desktop').style.display = 'block';
+                
+                vmRunning = true;
+                startBtn.style.display = 'none';
+                stopBtn.disabled = false;
+                restartBtn.disabled = false;
+                status.innerHTML = '<span class="status-indicator online"></span><span class="status-text">Running</span>';
+                
+                updateVMProgress('windows');
+            }, 6000);
+        }
+
+        function stopVM() {
+            const startBtn = document.getElementById('start-vm');
+            const stopBtn = document.getElementById('stop-vm');
+            const restartBtn = document.getElementById('restart-vm');
+            const status = document.getElementById('vm-status');
+            const console = document.getElementById('vm-console');
+            
+            vmRunning = false;
+            startBtn.style.display = 'inline-flex';
+            startBtn.disabled = false;
+            startBtn.innerHTML = '<span class="btn-icon">▶️</span>Start VM';
+            stopBtn.disabled = true;
+            restartBtn.disabled = true;
+            
+            status.innerHTML = '<span class="status-indicator offline"></span><span class="status-text">Offline</span>';
+            console.style.display = 'none';
+            
+            const bootLines = document.querySelectorAll('.boot-line');
+            bootLines.forEach(line => {
+                line.style.opacity = '0';
+            });
+            document.getElementById('boot-sequence').style.display = 'block';
+            document.getElementById('desktop').style.display = 'none';
+        }
+
+        function restartVM() {
+            stopVM();
+            setTimeout(() => startVM(), 1000);
+        }
+
+        function launchApp(app) {
+            switch(app) {
+                case 'cmd':
+                    alert('⚫ Command Prompt\n\nMicrosoft Windows [Version 10.0.17763.1]\n(c) 2018 Microsoft Corporation.\n\nC:\\Users\\Administrator>_\n\nAvailable commands:\n• dir, cd, type, copy\n• net user, net group\n• ipconfig, netstat\n• systeminfo, tasklist');
+                    break;
+                case 'powershell':
+                    alert('💙 Windows PowerShell\n\nWindows PowerShell 5.1.17763.1\nCopyright (C) Microsoft Corporation.\n\nPS C:\\Users\\Administrator>_\n\nPowerShell modules loaded:\n• ActiveDirectory\n• ServerManager\n• WebAdministration\n• DnsServer');
+                    break;
+                case 'iis':
+                    alert('🌐 Internet Information Services (IIS) Manager\n\nIIS 10.0 Management Console\n\nConfigured sites:\n• Default Web Site (Port 80)\n• Secure Site (Port 443)\n• FTP Site (Port 21)\n\nApplication pools: 3 running');
+                    break;
+                case 'aduc':
+                    alert('👥 Active Directory Users and Computers\n\nDomain: ABIDHACK.LOCAL\n\nOrganizational Units:\n• Users (25 accounts)\n• Computers (12 machines)\n• Groups (8 security groups)\n• Service Accounts (5 accounts)');
+                    break;
+            }
+        }
+
+        function toggleFullscreen() {
+            const console = document.getElementById('vm-console');
+            console.classList.toggle('fullscreen');
+        }
+
+        function openRDP() {
+            alert('🖥️ Remote Desktop Connection\n\nConnecting to Windows Server...\n\nServer: 192.168.1.100\nPort: 3389\nUser: Administrator\n\nRDP session would open in a real environment.');
+        }
+
+        function updateVMProgress(vmType) {
+            let progress = JSON.parse(localStorage.getItem('vmProgress') || '{}');
+            if (!progress[vmType]) {
+                progress[vmType] = {
+                    launched: true,
+                    launchCount: 0,
+                    totalTime: 0
+                };
+            }
+            progress[vmType].launchCount++;
+            progress[vmType].lastLaunched = new Date().toISOString();
+            localStorage.setItem('vmProgress', JSON.stringify(progress));
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>Interactive Cybersecurity Training Platform</p>
+                    <p>Educational purposes only</p>
+                    <p>All simulated activities</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

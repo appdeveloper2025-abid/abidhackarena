@@ -1,0 +1,625 @@
+/* Home Page Neumorphism Styling */
+
+/* Hero Section */
+.hero {
+    background: var(--neuro-bg);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: visible;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-logo {
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.binary-stream {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.binary-particle {
+    position: fixed;
+    color: #0066ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 102, 255, 0.8);
+    animation: binaryFloat 3s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes binaryFloat {
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.logo-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 20px 20px 40px var(--neuro-shadow-dark),
+                -20px -20px 40px var(--neuro-shadow-light);
+    padding: 1rem;
+    background: var(--neuro-bg);
+    transition: all 0.3s;
+    position: relative;
+    z-index: 2;
+    object-fit: contain;
+}
+
+.logo-image:hover {
+    box-shadow: 25px 25px 50px var(--neuro-shadow-dark),
+                -25px -25px 50px var(--neuro-shadow-light);
+    transform: scale(1.05);
+}
+
+.hero-title {
+    color: var(--neuro-text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    color: var(--neuro-text-secondary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.hero-description {
+    color: var(--neuro-text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.cta-button {
+    background: #fff;
+    color: var(--neuro-text-primary);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark),
+                inset -4px -4px 8px var(--neuro-shadow-light);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    box-shadow: 6px 6px 12px var(--neuro-shadow-dark),
+                -6px -6px 12px var(--neuro-shadow-light);
+    color: #0066ff;
+}
+
+.cta-button:active {
+    box-shadow: inset 5px 5px 10px var(--neuro-shadow-dark),
+                inset -5px -5px 10px var(--neuro-shadow-light);
+}
+
+/* Hero Visual */
+.hero-visual {
+    margin-top: 3rem;
+}
+
+.terminal-preview {
+    background: var(--neuro-bg);
+    border-radius: 20px;
+    box-shadow: 15px 15px 30px var(--neuro-shadow-dark),
+                -15px -15px 30px var(--neuro-shadow-light);
+    padding: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.terminal-body {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 2rem;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Terminal Radar */
+.terminal-radar {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.radar-circle-inner {
+    position: absolute;
+    border: 2px solid rgba(0, 255, 65, 0.6);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.radar-line-inner {
+    position: absolute;
+    width: 4px;
+    height: 50%;
+    background: linear-gradient(to top, rgba(255, 0, 0, 0.9), rgba(255, 0, 0, 0.3), transparent);
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    animation: radarSweep 3s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(255, 0, 0, 0.5));
+    border-radius: 2px;
+}
+
+.radar-target {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    animation: radarPulse 2s ease-in-out infinite;
+}
+
+.target-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.target-label {
+    color: #1a202c;
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    white-space: nowrap;
+    background: rgba(224, 229, 236, 0.9);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.radar-dot-inner {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: radarPulse 2s ease-in-out infinite;
+}
+
+@keyframes radarSweep {
+    from { transform: translate(-50%, -100%) rotate(0deg); }
+    to { transform: translate(-50%, -100%) rotate(360deg); }
+}
+
+@keyframes radarPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Features Section */
+.features {
+    background: var(--neuro-bg);
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--neuro-text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: var(--neuro-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px var(--neuro-shadow-dark),
+                -10px -10px 20px var(--neuro-shadow-light);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.feature-card:hover {
+    box-shadow: inset 6px 6px 12px var(--neuro-shadow-dark),
+                inset -6px -6px 12px var(--neuro-shadow-light);
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: var(--neuro-text-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--neuro-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* About Section */
+.about {
+    background: var(--neuro-bg);
+    padding: 4rem 2rem;
+}
+
+.about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    color: var(--neuro-text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat {
+    background: var(--neuro-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px var(--neuro-shadow-dark),
+                -10px -10px 20px var(--neuro-shadow-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stat-number {
+    color: var(--neuro-text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.stat-label {
+    color: var(--neuro-text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* CPU Monitor Styling */
+.nav-cpu-monitor {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--neuro-bg);
+    border-radius: 12px;
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+}
+
+.cpu-graph-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.graph-label {
+    color: var(--neuro-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.graph-value {
+    color: var(--neuro-text-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+canvas {
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .logo-image {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .logo-image {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 70vh;
+        padding: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    
+    .cta-button {
+        padding: 0.75rem 1.75rem;
+        font-size: 0.95rem;
+        min-height: 48px;
+    }
+    
+    .logo-image {
+        width: 140px;
+        height: 140px;
+        padding: 0.75rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .stat {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .terminal-radar {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .nav-cpu-monitor {
+        display: none;
+    }
+    
+    .binary-particle {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 60vh;
+        padding: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        min-height: 48px;
+    }
+    
+    .logo-image {
+        width: 120px;
+        height: 120px;
+        padding: 0.5rem;
+    }
+    
+    .features {
+        padding: 2rem 1rem;
+    }
+    
+    .about {
+        padding: 2rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+    }
+    
+    .feature-card {
+        padding: 1.25rem;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.85rem;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat {
+        padding: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+    }
+    
+    .terminal-radar {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .terminal-preview {
+        padding: 1rem;
+    }
+    
+    .terminal-body {
+        padding: 1.5rem;
+        min-height: 250px;
+    }
+    
+    .binary-particle {
+        font-size: 12px;
+    }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: 1rem;
+    }
+    
+    .logo-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .hero-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-description {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    .hero-visual {
+        margin-top: 1.5rem;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .cta-button {
+        min-height: 48px;
+        min-width: 120px;
+    }
+    
+    .feature-card:hover {
+        transform: none;
+        box-shadow: 10px 10px 20px var(--neuro-shadow-dark),
+                    -10px -10px 20px var(--neuro-shadow-light);
+    }
+    
+    .feature-card:active {
+        box-shadow: inset 6px 6px 12px var(--neuro-shadow-dark),
+                    inset -6px -6px 12px var(--neuro-shadow-light);
+    }
+}

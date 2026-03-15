@@ -1,0 +1,161 @@
+/* Dashboard Mobile Responsive CSS */
+
+@media (max-width: 768px) {
+    /* Profile Card Mobile */
+    .profile-card {
+        padding: 1rem !important;
+    }
+    
+    .profile-info {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+    
+    .avatar {
+        font-size: 3rem !important;
+        margin: 0 auto !important;
+        width: 80px !important;
+        height: 80px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .user-stats {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .user-stats h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .rank-badge {
+        display: inline-block !important;
+        margin: 0.5rem auto !important;
+    }
+    
+    .xp-info {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 1rem !important;
+        flex-wrap: wrap !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    .xp-info span {
+        font-size: 0.9rem !important;
+    }
+    
+    .progress-bar {
+        margin: 1rem 0 !important;
+        width: 100% !important;
+    }
+    
+    .achievements {
+        text-align: center !important;
+        margin-top: 1rem !important;
+    }
+    
+    .achievements h4 {
+        font-size: 1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .badges {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+    }
+    
+    .badge {
+        font-size: 0.85rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    /* Stats Card Mobile */
+    .stats-card {
+        padding: 1rem !important;
+    }
+    
+    .chart-container {
+        padding: 0.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .chart-container h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .chart-container canvas {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Quick Actions Mobile */
+    .action-buttons {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+    
+    .action-btn {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Categories Grid Mobile */
+    .categories-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .category-item {
+        padding: 1rem !important;
+    }
+    
+    /* Recent Activity Mobile */
+    .activity-list {
+        max-height: none !important;
+    }
+    
+    .activity-item {
+        padding: 0.75rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 0.75rem !important;
+    }
+    
+    .avatar {
+        font-size: 2.5rem !important;
+        width: 70px !important;
+        height: 70px !important;
+    }
+    
+    .user-stats h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .xp-info span {
+        font-size: 0.85rem !important;
+    }
+    
+    .badge {
+        font-size: 0.75rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+    
+    .chart-container h3 {
+        font-size: 0.9rem !important;
+    }
+}

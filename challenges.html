@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Challenges - AbidHack Arena</title>
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="pages-neumorphism.css">
+    <link rel="stylesheet" href="tor-browser.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link rel="stylesheet" href="challenges-visibility.css">
+    <link rel="stylesheet" href="mobile-responsive.css">
+    <link rel="stylesheet" href="navbar-mobile-fix.css">
+    <link rel="stylesheet" href="mobile-tor-icon.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <!-- Mobile Sticky Tor Icon -->
+    <div class="mobile-tor-icon" id="mobileTorIcon" onclick="openMobileTor()">🧅</div>
+    
+    <!-- Mobile Tor Search Modal -->
+    <div class="mobile-tor-modal" id="mobileTorModal">
+        <div class="mobile-tor-content">
+            <div class="mobile-tor-header">
+                <h3>🧅 Tor Search</h3>
+                <button class="mobile-tor-close" onclick="closeMobileTor()">×</button>
+            </div>
+            <div class="mobile-tor-search">
+                <input type="text" id="mobileTorInput" placeholder="Search the Dark Web..." onkeypress="if(event.key==='Enter') mobileTorSearch()">
+                <button onclick="mobileTorSearch()">🔍</button>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <div class="tor-search-box">
+                    <span class="tor-search-icon">🧅</span>
+                    <input type="text" id="tor-search-input" placeholder="Tor Search..." onkeypress="if(event.key==='Enter') torSearch()">
+                    <button onclick="torSearch()" class="tor-search-btn">🔍</button>
+                </div>
+                <a href="index.html" class="home-btn">🏠 Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="lab.html">Lab</a>
+                <a href="practical-labs.html">Labs</a>
+                <a href="leaderboard.html">Leaderboard</a>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <div class="challenges-container">
+        <div class="challenges-header">
+            <h1>Capture The Flag Challenges</h1>
+            <p>Test your cybersecurity skills across multiple domains in the AbidHack Arena</p>
+        </div>
+
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="showCategory('web')">Web Exploitation</button>
+            <button class="tab-btn" onclick="showCategory('network')">Network Scanning</button>
+            <button class="tab-btn" onclick="showCategory('crypto')">Cryptography</button>
+            <button class="tab-btn" onclick="showCategory('osint')">OSINT</button>
+        </div>
+
+        <div class="challenges-grid" id="challenges-grid">
+            <!-- Web Exploitation Challenges -->
+            <div class="challenge-category" id="web-challenges">
+                <div class="challenge-card glass-panel">
+                    <div class="challenge-header">
+                        <h3>SQL Injection Basic</h3>
+                        <span class="difficulty easy">Easy</span>
+                        <span class="points">+50 XP</span>
+                    </div>
+                    <div class="challenge-description">
+                        <p>Find the SQL injection vulnerability in the login form and extract the admin password.</p>
+                        <div class="challenge-target">
+                            <h4>Target: Login Portal</h4>
+                            <div class="mock-login">
+                                <input type="text" placeholder="Username" id="sql-username">
+                                <input type="password" placeholder="Password" id="sql-password">
+                                <button onclick="testSQLInjection()">Login</button>
+                            </div>
+                            <div class="target-response" id="sql-response"></div>
+                        </div>
+                    </div>
+                    <div class="flag-submission">
+                        <input type="text" placeholder="Enter flag (CYBER{...})" id="flag-sql-basic">
+                        <button onclick="submitFlag('sql-basic', 'CYBER{admin_password_123}', 50)">Submit Flag</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card glass-panel">
+                    <div class="challenge-header">
+                        <h3>XSS Reflected</h3>
+                        <span class="difficulty medium">Medium</span>
+                        <span class="points">+75 XP</span>
+                    </div>
+                    <div class="challenge-description">
+                        <p>Exploit the reflected XSS vulnerability to execute JavaScript code.</p>
+                        <div class="challenge-target">
+                            <h4>Target: Search Function</h4>
+                            <div class="mock-search">
+                                <input type="text" placeholder="Search query" id="xss-input">
+                                <button onclick="testXSS()">Search</button>
+                            </div>
+                            <div class="target-response" id="xss-response"></div>
+                        </div>
+                    </div>
+                    <div class="flag-submission">
+                        <input type="text" placeholder="Enter flag (CYBER{...})" id="flag-xss-reflected">
+                        <button onclick="submitFlag('xss-reflected', 'CYBER{xss_executed_successfully}', 75)">Submit Flag</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network Scanning Challenges -->
+            <div class="challenge-category" id="network-challenges" style="display: none;">
+                <div class="challenge-card glass-panel">
+                    <div class="challenge-header">
+                        <h3>Port Discovery</h3>
+                        <span class="difficulty easy">Easy</span>
+                        <span class="points">+40 XP</span>
+                    </div>
+                    <div class="challenge-description">
+                        <p>Scan the target server and find the hidden service running on a non-standard port.</p>
+                        <div class="challenge-target">
+                            <h4>Target: 192.168.1.100</h4>
+                            <div class="scan-results">
+                                <p>Use nmap to scan for open ports. One service is running on port 8080.</p>
+                                <code>nmap -p 1-10000 192.168.1.100</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flag-submission">
+                        <input type="text" placeholder="Enter flag (CYBER{...})" id="flag-port-discovery">
+                        <button onclick="submitFlag('port-discovery', 'CYBER{hidden_service_8080}', 40)">Submit Flag</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card glass-panel">
+                    <div class="challenge-header">
+                        <h3>Service Enumeration</h3>
+                        <span class="difficulty medium">Medium</span>
+                        <span class="points">+60 XP</span>
+                    </div>
+                    <div class="challenge-description">
+                        <p>Identify the version of the SSH service running on the target.</p>
+                        <div class="challenge-target">
+                            <h4>Target: ssh.cyberlab.local</h4>
+                            <div class="scan-results">
+                                <p>The SSH service banner reveals: OpenSSH_7.4</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flag-submission">
+                        <input type="text" placeholder="Enter flag (CYBER{...})" id="flag-service-enum">
+                        <button onclick="submitFlag('service-enum', 'CYBER{openssh_7_4}', 60)">Submit Flag</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cryptography Challenges -->
+            <div class="challenge-category" id="crypto-challenges" style="display: none;">
+                <div class="challenge-card glass-panel">
+                    <div class="challenge-header">
+                        <h3>Caesar Cipher</h3>
+                        <span class="difficulty easy">Easy</span>
+                        <span class="points">+30 XP</span>
+                    </div>
+                    <div class="challenge-description">
+                        <p>Decrypt the Caesar cipher with a shift of 13 (ROT13).</p>
+                        <div class="challenge-target">
+                            <h4>Encrypted Message:</h4>
+                            <code>PLORE{ebg13_vf_rnfl}</code>
+                        </div>
+                    </div>
+                    <div class="flag-submission">
+                        <input type="text" placeholder="Enter flag (CYBER{...})" id="flag-caesar">
+                        <button onclick="submitFlag('caesar', 'CYBER{rot13_is_easy}', 30)">Submit Flag</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card glass-panel">
+                    <div class="challenge-header">
+                        <h3>Hash Cracking</h3>
+                        <span class="difficulty medium">Medium</span>
+                        <span class="points">+80 XP</span>
+                    </div>
+                    <div class="challenge-description">
+                        <p>Crack the MD5 hash to reveal the password.</p>
+                        <div class="challenge-target">
+                            <h4>Hash:</h4>
+                            <code>5d41402abc4b2a76b9719d911017c592</code>
+                            <p>Hint: It's a common word</p>
+                        </div>
+                    </div>
+                    <div class="flag-submission">
+                        <input type="text" placeholder="Enter flag (CYBER{...})" id="flag-hash">
+                        <button onclick="submitFlag('hash', 'CYBER{hello}', 80)">Submit Flag</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OSINT Challenges -->
+            <div class="challenge-category" id="osint-challenges" style="display: none;">
+                <div class="challenge-card glass-panel">
+                    <div class="challenge-header">
+                        <h3>Domain Investigation</h3>
+                        <span class="difficulty easy">Easy</span>
+                        <span class="points">+35 XP</span>
+                    </div>
+                    <div class="challenge-description">
+                        <p>Find the registrar of the domain cyberlab-target.com</p>
+                        <div class="challenge-target">
+                            <h4>Target Domain: cyberlab-target.com</h4>
+                            <p>Use whois lookup to find the registrar information.</p>
+                        </div>
+                    </div>
+                    <div class="flag-submission">
+                        <input type="text" placeholder="Enter flag (CYBER{...})" id="flag-domain">
+                        <button onclick="submitFlag('domain', 'CYBER{namecheap}', 35)">Submit Flag</button>
+                    </div>
+                </div>
+
+                <div class="challenge-card glass-panel">
+                    <div class="challenge-header">
+                        <h3>Social Media Intel</h3>
+                        <span class="difficulty hard">Hard</span>
+                        <span class="points">+100 XP</span>
+                    </div>
+                    <div class="challenge-description">
+                        <p>Find the hidden message in the social media profile metadata.</p>
+                        <div class="challenge-target">
+                            <h4>Target: @cyberlab_user</h4>
+                            <p>The profile description contains: "My favorite number is 42 and I love security!"</p>
+                        </div>
+                    </div>
+                    <div class="flag-submission">
+                        <input type="text" placeholder="Enter flag (CYBER{...})" id="flag-social">
+                        <button onclick="submitFlag('social', 'CYBER{42_security}', 100)">Submit Flag</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content glass-panel success-modal">
+            <div class="success-animation">🎉</div>
+            <h2>Flag Captured!</h2>
+            <p id="success-message">Congratulations! You've earned XP points.</p>
+            <button onclick="closeSuccessModal()" class="success-btn">Continue</button>
+        </div>
+    </div>
+
+    <script src="challenges.js"></script>
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="tor-browser.js"></script>
+    <script src="mobile-tor-icon.js"></script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>Interactive Cybersecurity Training Platform</p>
+                    <p>Educational purposes only</p>
+                    <p>All simulated activities</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

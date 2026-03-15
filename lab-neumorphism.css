@@ -1,0 +1,504 @@
+/* Lab Page Neumorphism Styling */
+
+/* Lab Environment Container */
+.lab-environment {
+    background: var(--neuro-bg);
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* Lab Header */
+.lab-header {
+    background: var(--neuro-bg);
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 8px 8px 16px var(--neuro-shadow-dark),
+                -8px -8px 16px var(--neuro-shadow-light);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.vm-info {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.vm-status, .vm-name, .vm-ip {
+    color: var(--neuro-text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.vm-status.online {
+    color: #00c853;
+}
+
+.lab-controls {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.control-btn {
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--neuro-shadow-dark),
+                -5px -5px 10px var(--neuro-shadow-light);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.control-btn:hover {
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+}
+
+.control-btn:active {
+    box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark),
+                inset -4px -4px 8px var(--neuro-shadow-light);
+}
+
+/* Lab Content Grid */
+.lab-content {
+    display: grid;
+    grid-template-columns: 250px 1fr 280px;
+    gap: 1.5rem;
+}
+
+/* Tools Panel */
+.tools-panel, .info-panel {
+    background: var(--neuro-bg);
+    border-radius: 15px;
+    box-shadow: 8px 8px 16px var(--neuro-shadow-dark),
+                -8px -8px 16px var(--neuro-shadow-light);
+    padding: 1rem;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.panel-header h3 {
+    color: var(--neuro-text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.toggle-panel {
+    background: var(--neuro-bg);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 6px var(--neuro-shadow-dark),
+                -3px -3px 6px var(--neuro-shadow-light);
+    cursor: pointer;
+    color: var(--neuro-text-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+}
+
+.toggle-panel:hover {
+    box-shadow: inset 2px 2px 4px var(--neuro-shadow-dark),
+                inset -2px -2px 4px var(--neuro-shadow-light);
+}
+
+/* Tool Categories */
+.tool-category {
+    margin-bottom: 1.5rem;
+}
+
+.tool-category h4 {
+    color: var(--neuro-text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tool-btn {
+    width: 100%;
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    border: none;
+    padding: 0.7rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px var(--neuro-shadow-dark),
+                -4px -4px 8px var(--neuro-shadow-light);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.tool-btn:hover {
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+    color: #0066ff;
+}
+
+/* Main Workspace */
+.main-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Terminal Container */
+.terminal-container {
+    background: var(--neuro-bg);
+    border-radius: 15px;
+    box-shadow: 8px 8px 16px var(--neuro-shadow-dark),
+                -8px -8px 16px var(--neuro-shadow-light);
+    overflow: hidden;
+}
+
+/* Terminal Tabs */
+.terminal-tabs {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--neuro-bg);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--neuro-bg);
+    border-radius: 8px;
+    box-shadow: 3px 3px 6px var(--neuro-shadow-dark),
+                -3px -3px 6px var(--neuro-shadow-light);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    box-shadow: inset 2px 2px 4px var(--neuro-shadow-dark),
+                inset -2px -2px 4px var(--neuro-shadow-light);
+}
+
+.tab.active {
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+    background: linear-gradient(145deg, #d4d9e0, #e8edf2);
+}
+
+.tab-name {
+    color: var(--neuro-text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.tab-close {
+    color: var(--neuro-text-secondary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.tab-close:hover {
+    color: #ff4444;
+}
+
+.new-tab-btn {
+    background: var(--neuro-bg);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 6px var(--neuro-shadow-dark),
+                -3px -3px 6px var(--neuro-shadow-light);
+    cursor: pointer;
+    color: var(--neuro-text-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.new-tab-btn:hover {
+    box-shadow: inset 2px 2px 4px var(--neuro-shadow-dark),
+                inset -2px -2px 4px var(--neuro-shadow-light);
+}
+
+/* Terminal Header */
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--neuro-bg);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.terminal-buttons .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px var(--neuro-shadow-dark),
+                -2px -2px 4px var(--neuro-shadow-light);
+}
+
+.terminal-buttons .btn.red { background: #ff5f56; }
+.terminal-buttons .btn.yellow { background: #ffbd2e; }
+.terminal-buttons .btn.green { background: #27c93f; }
+
+.terminal-title {
+    color: var(--neuro-text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.terminal-status {
+    color: #00c853;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.terminal-actions button {
+    background: var(--neuro-bg);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 6px var(--neuro-shadow-dark),
+                -3px -3px 6px var(--neuro-shadow-light);
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: all 0.2s;
+}
+
+.terminal-actions button:hover {
+    box-shadow: inset 2px 2px 4px var(--neuro-shadow-dark),
+                inset -2px -2px 4px var(--neuro-shadow-light);
+}
+
+/* Terminal Body */
+.terminal-body {
+    background: #1a1a1a;
+    padding: 1rem;
+    min-height: 400px;
+    max-height: 500px;
+    overflow-y: auto;
+    font-family: 'Fira Code', monospace;
+    position: relative;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.terminal-prompt {
+    color: #00ff41;
+    font-weight: 600;
+    white-space: pre;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    outline: none;
+    padding: 0 0.5rem;
+}
+
+.terminal-output {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.terminal-line {
+    margin-bottom: 0.25rem;
+}
+
+.terminal-line.command { color: #00ff41; }
+.terminal-line.success { color: #00c853; }
+.terminal-line.error { color: #ff4444; }
+.terminal-line.info { color: #00d4ff; }
+.terminal-line.normal { color: #fff; }
+
+/* Lab Objectives */
+.lab-objectives {
+    background: var(--neuro-bg);
+    border-radius: 15px;
+    box-shadow: 8px 8px 16px var(--neuro-shadow-dark),
+                -8px -8px 16px var(--neuro-shadow-light);
+    padding: 1rem;
+}
+
+.objectives-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.objective-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--neuro-bg);
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 4px var(--neuro-shadow-dark),
+                inset -2px -2px 4px var(--neuro-shadow-light);
+}
+
+.objective-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.objective-item label {
+    color: var(--neuro-text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Info Panel */
+.info-section {
+    margin-bottom: 1.5rem;
+}
+
+.info-section h4 {
+    color: var(--neuro-text-primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.info-section p {
+    color: var(--neuro-text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-section strong {
+    color: var(--neuro-text-primary);
+    font-weight: 600;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: var(--neuro-bg);
+    border-radius: 10px;
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00c853, #00ff41);
+    border-radius: 10px;
+    transition: width 0.3s;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+/* Hints Container */
+.hints-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hint-btn {
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    border: none;
+    padding: 0.7rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px var(--neuro-shadow-dark),
+                -4px -4px 8px var(--neuro-shadow-light);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.hint-btn:hover {
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+    color: #ffaa00;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .lab-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .tools-panel, .info-panel {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .lab-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .vm-info {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    .lab-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .control-btn {
+        flex: 1;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .terminal-body {
+        min-height: 300px;
+        max-height: 400px;
+    }
+}

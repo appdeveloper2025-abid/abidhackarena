@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - AbidHack Arena</title>
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="pages-neumorphism.css">
+    <link rel="stylesheet" href="tor-browser.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <div class="tor-search-box">
+                    <span class="tor-search-icon">🧅</span>
+                    <input type="text" id="tor-search-input" placeholder="Tor Search..." onkeypress="if(event.key==='Enter') torSearch()">
+                    <button onclick="torSearch()" class="tor-search-btn">🔍</button>
+                </div>
+                <a href="index.html" class="home-btn">🏠 Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="lab.html">Lab</a>
+                <a href="practical-labs.html">Labs</a>
+                <a href="challenges.html">Challenges</a>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <div class="leaderboard-container">
+        <div class="leaderboard-header">
+            <h1>Global Leaderboard</h1>
+            <p>Top ethical hackers in the AbidHack Arena community</p>
+        </div>
+
+        <div class="leaderboard-content">
+            <div class="leaderboard-main glass-panel">
+                <div class="leaderboard-tabs">
+                    <button class="tab-btn active" onclick="showLeaderboard('overall')">Overall</button>
+                    <button class="tab-btn" onclick="showLeaderboard('weekly')">This Week</button>
+                    <button class="tab-btn" onclick="showLeaderboard('monthly')">This Month</button>
+                </div>
+
+                <div class="leaderboard-table" id="leaderboard-table">
+                    <div class="table-header">
+                        <span class="rank-col">Rank</span>
+                        <span class="user-col">User</span>
+                        <span class="xp-col">XP</span>
+                        <span class="level-col">Level</span>
+                        <span class="challenges-col">CTFs</span>
+                    </div>
+
+                    <div class="leaderboard-entries" id="leaderboard-entries">
+                        <!-- Entries will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaderboard-sidebar">
+                <div class="user-rank-card glass-panel">
+                    <h3>Your Ranking</h3>
+                    <div class="user-rank-info">
+                        <div class="rank-position" id="user-position">#1</div>
+                        <div class="rank-details">
+                            <p><strong id="user-display-name">Hacker</strong></p>
+                            <p>XP: <span id="user-xp-display">0</span></p>
+                            <p>Level: <span id="user-level-display">1</span></p>
+                            <p>CTFs Solved: <span id="user-ctfs-display">0</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="top-performers glass-panel">
+                    <h3>Top Performers</h3>
+                    <div class="podium">
+                        <div class="podium-place second">
+                            <div class="podium-user">
+                                <div class="avatar">🥈</div>
+                                <span class="username">CyberNinja</span>
+                                <span class="xp">2,450 XP</span>
+                            </div>
+                        </div>
+                        <div class="podium-place first">
+                            <div class="podium-user">
+                                <div class="avatar">🥇</div>
+                                <span class="username">H4ck3rM4st3r</span>
+                                <span class="xp">3,200 XP</span>
+                            </div>
+                        </div>
+                        <div class="podium-place third">
+                            <div class="podium-user">
+                                <div class="avatar">🥉</div>
+                                <span class="username">SecurityPro</span>
+                                <span class="xp">1,890 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements-showcase glass-panel">
+                    <h3>Recent Achievements</h3>
+                    <div class="achievement-list">
+                        <div class="achievement-item">
+                            <span class="achievement-badge">🏆</span>
+                            <div class="achievement-info">
+                                <span class="achievement-title">First Blood</span>
+                                <span class="achievement-user">H4ck3rM4st3r</span>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <span class="achievement-badge">🎯</span>
+                            <div class="achievement-info">
+                                <span class="achievement-title">CTF Master</span>
+                                <span class="achievement-user">CyberNinja</span>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <span class="achievement-badge">⚡</span>
+                            <div class="achievement-info">
+                                <span class="achievement-title">Speed Demon</span>
+                                <span class="achievement-user">SecurityPro</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-summary glass-panel">
+                    <h3>Platform Statistics</h3>
+                    <div class="platform-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">1,247</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15,632</span>
+                            <span class="stat-label">CTFs Solved</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">89</span>
+                            <span class="stat-label">Available Challenges</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Lab Uptime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="tor-browser.js"></script>
+    <script>
+        // Sample leaderboard data
+        const leaderboardData = {
+            overall: [
+                { username: 'H4ck3rM4st3r', xp: 3200, level: 15, ctfs: 45, avatar: '👑' },
+                { username: 'CyberNinja', xp: 2450, level: 12, ctfs: 38, avatar: '🥷' },
+                { username: 'SecurityPro', xp: 1890, level: 10, ctfs: 29, avatar: '🛡️' },
+                { username: 'PentestKing', xp: 1650, level: 9, ctfs: 25, avatar: '⚔️' },
+                { username: 'BugHunter', xp: 1420, level: 8, ctfs: 22, avatar: '🐛' },
+                { username: 'CryptoMaster', xp: 1200, level: 7, ctfs: 18, avatar: '🔐' },
+                { username: 'NetworkGuru', xp: 980, level: 6, ctfs: 15, avatar: '🌐' },
+                { username: 'WebHacker', xp: 750, level: 5, ctfs: 12, avatar: '🕸️' },
+                { username: 'OSINTExpert', xp: 620, level: 4, ctfs: 10, avatar: '🔍' },
+                { username: 'ScriptKiddie', xp: 450, level: 3, ctfs: 8, avatar: '💻' }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLeaderboard();
+            updateUserRanking();
+        });
+
+        function loadLeaderboard() {
+            const entries = document.getElementById('leaderboard-entries');
+            const userData = getUserData();
+            
+            // Add user to leaderboard if they have XP
+            if (userData.xp > 0) {
+                const userEntry = {
+                    username: userData.username,
+                    xp: userData.xp,
+                    level: userData.level,
+                    ctfs: userData.solvedChallenges,
+                    avatar: '👨💻'
+                };
+                
+                // Insert user in correct position
+                let inserted = false;
+                for (let i = 0; i < leaderboardData.overall.length; i++) {
+                    if (userData.xp > leaderboardData.overall[i].xp) {
+                        leaderboardData.overall.splice(i, 0, userEntry);
+                        inserted = true;
+                        break;
+                    }
+                }
+                if (!inserted) {
+                    leaderboardData.overall.push(userEntry);
+                }
+            }
+
+            entries.innerHTML = '';
+            leaderboardData.overall.forEach((user, index) => {
+                const entry = document.createElement('div');
+                entry.className = 'leaderboard-entry';
+                if (user.username === userData.username) {
+                    entry.classList.add('current-user');
+                }
+                
+                entry.innerHTML = `
+                    <span class="rank">#${index + 1}</span>
+                    <span class="user">
+                        <span class="avatar">${user.avatar}</span>
+                        <span class="username">${user.username}</span>
+                    </span>
+                    <span class="xp">${user.xp.toLocaleString()}</span>
+                    <span class="level">${user.level}</span>
+                    <span class="challenges">${user.ctfs}</span>
+                `;
+                
+                entries.appendChild(entry);
+            });
+        }
+
+        function updateUserRanking() {
+            const userData = getUserData();
+            const userPosition = leaderboardData.overall.findIndex(user => user.username === userData.username) + 1;
+            
+            document.getElementById('user-position').textContent = userPosition > 0 ? `#${userPosition}` : '#-';
+            document.getElementById('user-display-name').textContent = userData.username;
+            document.getElementById('user-xp-display').textContent = userData.xp.toLocaleString();
+            document.getElementById('user-level-display').textContent = userData.level;
+            document.getElementById('user-ctfs-display').textContent = userData.solvedChallenges;
+        }
+
+        function showLeaderboard(type) {
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // For demo purposes, all tabs show the same data
+            loadLeaderboard();
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>Interactive Cybersecurity Training Platform</p>
+                    <p>Educational purposes only</p>
+                    <p>All simulated activities</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

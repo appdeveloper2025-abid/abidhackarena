@@ -1,0 +1,590 @@
+/* Dashboard & Challenges Neumorphism Styling */
+
+/* Dashboard Container */
+.dashboard-container, .challenges-container {
+    background: var(--neuro-bg);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Dashboard Header */
+.dashboard-header, .challenges-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.dashboard-header h1, .challenges-header h1 {
+    color: var(--neuro-text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header p, .challenges-header p {
+    color: var(--neuro-text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Glass Panel - Neumorphism Style */
+.glass-panel {
+    background: var(--neuro-bg);
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px var(--neuro-shadow-dark),
+                -10px -10px 20px var(--neuro-shadow-light);
+    padding: 2rem;
+    transition: all 0.3s;
+}
+
+.glass-panel:hover {
+    box-shadow: 12px 12px 24px var(--neuro-shadow-dark),
+                -12px -12px 24px var(--neuro-shadow-light);
+    transform: translateY(-3px);
+}
+
+.glass-panel h2 {
+    color: var(--neuro-text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* Profile Card */
+.profile-card .profile-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-card .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--neuro-bg);
+    box-shadow: 8px 8px 16px var(--neuro-shadow-dark),
+                -8px -8px 16px var(--neuro-shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+.profile-card .user-stats h3 {
+    color: var(--neuro-text-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.rank-badge {
+    display: inline-block;
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px var(--neuro-shadow-dark),
+                -4px -4px 8px var(--neuro-shadow-light);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.xp-info {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--neuro-text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.xp-info span {
+    color: var(--neuro-text-primary);
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background: var(--neuro-bg);
+    border-radius: 10px;
+    box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark),
+                inset -4px -4px 8px var(--neuro-shadow-light);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0066ff, #00d4ff);
+    border-radius: 10px;
+    transition: width 0.3s;
+    box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
+}
+
+/* Achievements */
+.achievements h4 {
+    color: var(--neuro-text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.badge {
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--neuro-shadow-dark),
+                -5px -5px 10px var(--neuro-shadow-light);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Quick Actions */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.action-btn {
+    background: var(--neuro-bg);
+    border: none;
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    box-shadow: 8px 8px 16px var(--neuro-shadow-dark),
+                -8px -8px 16px var(--neuro-shadow-light);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    box-shadow: inset 5px 5px 10px var(--neuro-shadow-dark),
+                inset -5px -5px 10px var(--neuro-shadow-light);
+}
+
+.action-btn .btn-icon {
+    font-size: 2rem;
+}
+
+.action-btn span:last-child {
+    color: var(--neuro-text-primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* Categories Grid */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.category-item {
+    background: var(--neuro-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 8px 8px 16px var(--neuro-shadow-dark),
+                -8px -8px 16px var(--neuro-shadow-light);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.category-item:hover {
+    box-shadow: inset 5px 5px 10px var(--neuro-shadow-dark),
+                inset -5px -5px 10px var(--neuro-shadow-light);
+    transform: translateY(-3px);
+}
+
+.category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.category-item h3 {
+    color: var(--neuro-text-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.category-item p {
+    color: var(--neuro-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Recent Activity */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-item {
+    background: var(--neuro-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.activity-time {
+    color: var(--neuro-text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.activity-text {
+    color: var(--neuro-text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Chart Container */
+.chart-container {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--neuro-bg);
+    border-radius: 15px;
+    box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark),
+                inset -4px -4px 8px var(--neuro-shadow-light);
+}
+
+.chart-container h3 {
+    color: var(--neuro-text-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tab-btn {
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px var(--neuro-shadow-dark),
+                -6px -6px 12px var(--neuro-shadow-light);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark),
+                inset -4px -4px 8px var(--neuro-shadow-light);
+}
+
+.tab-btn.active {
+    box-shadow: inset 5px 5px 10px var(--neuro-shadow-dark),
+                inset -5px -5px 10px var(--neuro-shadow-light);
+    color: #0066ff;
+}
+
+/* Challenges Grid */
+.challenges-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.challenge-category {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+/* Challenge Card */
+.challenge-card {
+    background: var(--neuro-bg);
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px var(--neuro-shadow-dark),
+                -10px -10px 20px var(--neuro-shadow-light);
+    padding: 2rem;
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.challenge-header h3 {
+    color: var(--neuro-text-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex: 1;
+}
+
+.difficulty {
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    box-shadow: 4px 4px 8px var(--neuro-shadow-dark),
+                -4px -4px 8px var(--neuro-shadow-light);
+}
+
+.difficulty.easy {
+    background: linear-gradient(145deg, #d4d9e0, #e8edf2);
+    color: #00c853;
+}
+
+.difficulty.medium {
+    background: linear-gradient(145deg, #d4d9e0, #e8edf2);
+    color: #ffaa00;
+}
+
+.difficulty.hard {
+    background: linear-gradient(145deg, #d4d9e0, #e8edf2);
+    color: #ff4444;
+}
+
+.points {
+    background: var(--neuro-bg);
+    color: #0066ff;
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: 4px 4px 8px var(--neuro-shadow-dark),
+                -4px -4px 8px var(--neuro-shadow-light);
+}
+
+/* Challenge Description */
+.challenge-description {
+    margin-bottom: 1.5rem;
+}
+
+.challenge-description p {
+    color: var(--neuro-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.challenge-target {
+    background: var(--neuro-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark),
+                inset -4px -4px 8px var(--neuro-shadow-light);
+    margin-top: 1rem;
+}
+
+.challenge-target h4 {
+    color: var(--neuro-text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.challenge-target code {
+    display: block;
+    background: #1a1a1a;
+    color: #00ff41;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+/* Mock Login/Search */
+.mock-login, .mock-search {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.mock-login input, .mock-search input {
+    background: var(--neuro-bg);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 10px;
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+    color: var(--neuro-text-primary);
+    font-size: 0.95rem;
+}
+
+.mock-login button, .mock-search button {
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--neuro-shadow-dark),
+                -5px -5px 10px var(--neuro-shadow-light);
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.mock-login button:hover, .mock-search button:hover {
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+}
+
+.target-response {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    min-height: 40px;
+}
+
+/* Flag Submission */
+.flag-submission {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.flag-submission input {
+    flex: 1;
+    background: var(--neuro-bg);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 10px;
+    box-shadow: inset 3px 3px 6px var(--neuro-shadow-dark),
+                inset -3px -3px 6px var(--neuro-shadow-light);
+    color: var(--neuro-text-primary);
+    font-size: 0.95rem;
+}
+
+.flag-submission button {
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 6px 6px 12px var(--neuro-shadow-dark),
+                -6px -6px 12px var(--neuro-shadow-light);
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.flag-submission button:hover {
+    box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark),
+                inset -4px -4px 8px var(--neuro-shadow-light);
+    color: #0066ff;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+.success-animation {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.success-btn {
+    background: var(--neuro-bg);
+    color: var(--neuro-text-primary);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 6px 6px 12px var(--neuro-shadow-dark),
+                -6px -6px 12px var(--neuro-shadow-light);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.success-btn:hover {
+    box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark),
+                inset -4px -4px 8px var(--neuro-shadow-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container, .challenges-container {
+        padding: 1rem;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .challenge-category {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-tabs {
+        flex-direction: column;
+    }
+    
+    .flag-submission {
+        flex-direction: column;
+    }
+}

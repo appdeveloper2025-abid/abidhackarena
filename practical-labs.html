@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical Labs - AbidHack Arena</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#00ff41">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="pages-neumorphism.css">
+    <link rel="stylesheet" href="tor-browser.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <div class="tor-search-box">
+                    <span class="tor-search-icon">🧅</span>
+                    <input type="text" id="tor-search-input" placeholder="Tor Search..." onkeypress="if(event.key==='Enter') torSearch()">
+                    <button onclick="torSearch()" class="tor-search-btn">🔍</button>
+                </div>
+                <a href="index.html" class="home-btn">🏠 Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="lab.html">Terminal</a>
+                <a href="practical-labs.html">Labs</a>
+                <a href="challenges.html">Challenges</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <div class="nav-dropdown profile-dropdown">
+                    <a href="profile.html" class="nav-profile-avatar" id="navProfileAvatar">
+                        <img id="navProfileImage" src="" alt="Profile" style="display: none;">
+                        <span id="navProfileInitial">H</span>
+                    </a>
+                    <div class="dropdown-menu profile-menu">
+                        <a href="profile.html">⚙️ Settings</a>
+                        <a href="#" onclick="handleLogout(); return false;">🚪 Logout</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown profile-dropdown">
+                    <a href="profile.html" class="nav-profile-avatar" id="navProfileAvatar">
+                        <img id="navProfileImage" src="" alt="Profile" style="display: none;">
+                        <span id="navProfileInitial">H</span>
+                    </a>
+                    <div class="dropdown-menu profile-menu">
+                        <a href="profile.html">⚙️ Settings</a>
+                        <a href="#" onclick="handleLogout(); return false;">🚪 Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <div class="labs-container">
+        <div class="labs-header">
+            <h1>Practical Lab Environments</h1>
+            <p>Choose from multiple virtual machines and specialized lab scenarios</p>
+        </div>
+
+        <div class="vm-selector">
+            <h2>Virtual Machine Selection</h2>
+            <div class="vm-grid">
+                <div class="vm-card glass-panel">
+                    <div class="vm-icon">🐉</div>
+                    <h3>Kali Linux</h3>
+                    <p>Penetration testing distribution with 600+ tools</p>
+                    <div class="vm-specs">
+                        <span>RAM: 4GB</span>
+                        <span>Storage: 20GB</span>
+                        <span>Tools: 600+</span>
+                    </div>
+                    <button class="vm-launch-btn" onclick="window.location.href='kali-vm.html'">Launch Kali</button>
+                </div>
+
+                <div class="vm-card glass-panel">
+                    <div class="vm-icon">🦜</div>
+                    <h3>Parrot Security OS</h3>
+                    <p>Security-focused OS with privacy tools and pentesting suite</p>
+                    <div class="vm-specs">
+                        <span>RAM: 3GB</span>
+                        <span>Storage: 15GB</span>
+                        <span>Tools: 400+</span>
+                    </div>
+                    <button class="vm-launch-btn" onclick="window.location.href='parrot-vm.html'">Launch Parrot</button>
+                </div>
+
+                <div class="vm-card glass-panel">
+                    <div class="vm-icon">🪟</div>
+                    <h3>Windows Server 2019</h3>
+                    <p>Target environment for Windows-based penetration testing</p>
+                    <div class="vm-specs">
+                        <span>RAM: 8GB</span>
+                        <span>Storage: 40GB</span>
+                        <span>Services: IIS, AD</span>
+                    </div>
+                    <button class="vm-launch-btn" onclick="window.location.href='windows-vm.html'">Launch Windows</button>
+                </div>
+
+                <div class="vm-card glass-panel">
+                    <div class="vm-icon">🐧</div>
+                    <h3>Ubuntu Server</h3>
+                    <p>Linux server environment with vulnerable applications</p>
+                    <div class="vm-specs">
+                        <span>RAM: 2GB</span>
+                        <span>Storage: 10GB</span>
+                        <span>Services: Apache, MySQL</span>
+                    </div>
+                    <button class="vm-launch-btn" onclick="window.location.href='ubuntu-vm.html'">Launch Ubuntu</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="lab-scenarios">
+            <h2>Specialized Lab Scenarios</h2>
+            <div class="scenarios-grid">
+                <div class="scenario-card glass-panel">
+                    <div class="scenario-header">
+                        <h3>🌐 Web Application Security</h3>
+                        <span class="difficulty medium">Intermediate</span>
+                    </div>
+                    <div class="scenario-description">
+                        <p>Test web applications for common vulnerabilities including SQL injection, XSS, and CSRF attacks.</p>
+                        <div class="scenario-targets">
+                            <h4>Target Applications:</h4>
+                            <ul>
+                                <li>DVWA (Damn Vulnerable Web App)</li>
+                                <li>WebGoat Security Training</li>
+                                <li>Mutillidae II</li>
+                                <li>bWAPP (Buggy Web Application)</li>
+                            </ul>
+                        </div>
+                        <div class="scenario-tools">
+                            <span class="tool-tag">Burp Suite</span>
+                            <span class="tool-tag">SQLMap</span>
+                            <span class="tool-tag">OWASP ZAP</span>
+                        </div>
+                    </div>
+                    <button class="scenario-btn" onclick="launchScenario('webapp')">Start Lab</button>
+                </div>
+
+                <div class="scenario-card glass-panel">
+                    <div class="scenario-header">
+                        <h3>🔍 Network Penetration Testing</h3>
+                        <span class="difficulty hard">Advanced</span>
+                    </div>
+                    <div class="scenario-description">
+                        <p>Simulate enterprise network environments with multiple hosts, services, and security controls.</p>
+                        <div class="scenario-targets">
+                            <h4>Network Topology:</h4>
+                            <ul>
+                                <li>DMZ with Web Servers</li>
+                                <li>Internal Network (10.0.0.0/24)</li>
+                                <li>Domain Controller</li>
+                                <li>Workstations and Servers</li>
+                            </ul>
+                        </div>
+                        <div class="scenario-tools">
+                            <span class="tool-tag">Nmap</span>
+                            <span class="tool-tag">Metasploit</span>
+                            <span class="tool-tag">Responder</span>
+                        </div>
+                    </div>
+                    <button class="scenario-btn" onclick="launchScenario('network')">Start Lab</button>
+                </div>
+
+                <div class="scenario-card glass-panel">
+                    <div class="scenario-header">
+                        <h3>🔬 Digital Forensics</h3>
+                        <span class="difficulty medium">Intermediate</span>
+                    </div>
+                    <div class="scenario-description">
+                        <p>Analyze digital evidence including memory dumps, disk images, and network captures.</p>
+                        <div class="scenario-targets">
+                            <h4>Evidence Types:</h4>
+                            <ul>
+                                <li>Memory Dumps (Windows/Linux)</li>
+                                <li>Disk Images (E01, DD)</li>
+                                <li>Network Packet Captures</li>
+                                <li>Mobile Device Extractions</li>
+                            </ul>
+                        </div>
+                        <div class="scenario-tools">
+                            <span class="tool-tag">Volatility</span>
+                            <span class="tool-tag">Autopsy</span>
+                            <span class="tool-tag">Wireshark</span>
+                        </div>
+                    </div>
+                    <button class="scenario-btn" onclick="launchScenario('forensics')">Start Lab</button>
+                </div>
+
+                <div class="scenario-card glass-panel">
+                    <div class="scenario-header">
+                        <h3>🏭 Industrial Control Systems</h3>
+                        <span class="difficulty hard">Expert</span>
+                    </div>
+                    <div class="scenario-description">
+                        <p>Explore SCADA/ICS security in simulated industrial environments with PLCs and HMIs.</p>
+                        <div class="scenario-targets">
+                            <h4>Industrial Systems:</h4>
+                            <ul>
+                                <li>Modbus TCP/RTU Devices</li>
+                                <li>DNP3 Communication</li>
+                                <li>Schneider Electric PLCs</li>
+                                <li>Siemens S7 Controllers</li>
+                            </ul>
+                        </div>
+                        <div class="scenario-tools">
+                            <span class="tool-tag">Nmap NSE</span>
+                            <span class="tool-tag">Metasploit ICS</span>
+                            <span class="tool-tag">PLCScan</span>
+                        </div>
+                    </div>
+                    <button class="scenario-btn" onclick="launchScenario('ics')">Start Lab</button>
+                </div>
+
+                <div class="scenario-card glass-panel">
+                    <div class="scenario-header">
+                        <h3>📱 Mobile Application Security</h3>
+                        <span class="difficulty medium">Intermediate</span>
+                    </div>
+                    <div class="scenario-description">
+                        <p>Analyze and test Android and iOS applications for security vulnerabilities.</p>
+                        <div class="scenario-targets">
+                            <h4>Mobile Platforms:</h4>
+                            <ul>
+                                <li>Android APK Analysis</li>
+                                <li>iOS IPA Examination</li>
+                                <li>Runtime Application Testing</li>
+                                <li>API Security Assessment</li>
+                            </ul>
+                        </div>
+                        <div class="scenario-tools">
+                            <span class="tool-tag">MobSF</span>
+                            <span class="tool-tag">Frida</span>
+                            <span class="tool-tag">Objection</span>
+                        </div>
+                    </div>
+                    <button class="scenario-btn" onclick="launchScenario('mobile')">Start Lab</button>
+                </div>
+
+                <div class="scenario-card glass-panel">
+                    <div class="scenario-header">
+                        <h3>🔐 Cryptography & Steganography</h3>
+                        <span class="difficulty easy">Beginner</span>
+                    </div>
+                    <div class="scenario-description">
+                        <p>Learn cryptographic concepts and practice breaking weak encryption implementations.</p>
+                        <div class="scenario-targets">
+                            <h4>Crypto Challenges:</h4>
+                            <ul>
+                                <li>Classical Ciphers (Caesar, Vigenère)</li>
+                                <li>Hash Function Analysis</li>
+                                <li>RSA Key Recovery</li>
+                                <li>Steganography Detection</li>
+                            </ul>
+                        </div>
+                        <div class="scenario-tools">
+                            <span class="tool-tag">John the Ripper</span>
+                            <span class="tool-tag">Hashcat</span>
+                            <span class="tool-tag">Steghide</span>
+                        </div>
+                    </div>
+                    <button class="scenario-btn" onclick="launchScenario('crypto')">Start Lab</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="lab-progress glass-panel">
+            <h2>Your Lab Progress</h2>
+            <div class="progress-stats">
+                <div class="progress-item">
+                    <span class="progress-label">Labs Completed</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                    <span class="progress-value">13/20</span>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">VMs Launched</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%"></div>
+                    </div>
+                    <span class="progress-value">4/5</span>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">Tools Mastered</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <span class="progress-value">27/60</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VM Launch Modal -->
+    <div id="vm-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close" onclick="closeVMModal()">&times;</span>
+            <h2 id="vm-modal-title">Launching Virtual Machine</h2>
+            <div class="vm-launch-progress">
+                <div class="vm-boot-animation">
+                    <div class="boot-logo" id="vm-boot-logo">🐉</div>
+                    <div class="boot-text" id="vm-boot-text">Initializing system...</div>
+                    <div class="boot-progress">
+                        <div class="boot-bar" id="vm-boot-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="vm-launch-actions">
+                <button onclick="proceedToTerminal()" id="proceed-btn" style="display: none;">Enter Terminal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="practical-labs.js"></script>
+    <script src="tor-browser.js"></script>
+    <script src="profile-loader.js"></script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>Interactive Cybersecurity Training Platform</p>
+                    <p>Educational purposes only</p>
+                    <p>All simulated activities</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

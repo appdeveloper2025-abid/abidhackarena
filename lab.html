@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Lab - AbidHack Arena</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#00ff41">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="lab-neumorphism.css">
+    <link rel="stylesheet" href="tor-browser.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link rel="stylesheet" href="commands/nano-editor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <div class="tor-search-box">
+                    <span class="tor-search-icon">🧅</span>
+                    <input type="text" id="tor-search-input" placeholder="Tor Search..." onkeypress="if(event.key==='Enter') torSearch()">
+                    <button onclick="torSearch()" class="tor-search-btn">🔍</button>
+                </div>
+                <a href="index.html" class="home-btn">🏠 Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="practical-labs.html">Labs</a>
+                <a href="challenges.html">Challenges</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <div class="nav-dropdown profile-dropdown">
+                    <a href="profile.html" class="nav-profile-avatar" id="navProfileAvatar">
+                        <img id="navProfileImage" src="" alt="Profile" style="display: none;">
+                        <span id="navProfileInitial">H</span>
+                    </a>
+                    <div class="dropdown-menu profile-menu">
+                        <a href="profile.html">⚙️ Settings</a>
+                        <a href="#" onclick="handleLogout(); return false;">🚪 Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <div class="lab-environment">
+        <div class="lab-header">
+            <div class="vm-info">
+                <span class="vm-status online" id="vmStatus">🟢 Online</span>
+                <span class="vm-name" id="vmName">Kali Linux</span>
+                <span class="vm-ip" id="vmIP">10.10.10.100</span>
+            </div>
+            <div class="lab-controls">
+                <button class="control-btn" onclick="resetLab()">🔄 Reset</button>
+                <button class="control-btn" onclick="saveLab()">💾 Save</button>
+                <button class="control-btn" onclick="exitLab()">🚪 Exit</button>
+            </div>
+        </div>
+
+        <div class="lab-content">
+            <div class="tools-panel">
+                <div class="panel-header">
+                    <h3>🛠️ Tools</h3>
+                    <button class="toggle-panel" onclick="togglePanel('tools')">−</button>
+                </div>
+                <div class="tool-categories" id="toolsContent">
+                    <div class="tool-category">
+                        <h4>🔍 Reconnaissance</h4>
+                        <button class="tool-btn" onclick="runTool('nmap')">Nmap</button>
+                        <button class="tool-btn" onclick="runTool('masscan')">Masscan</button>
+                        <button class="tool-btn" onclick="runTool('rustscan')">RustScan</button>
+                        <button class="tool-btn" onclick="runTool('gobuster')">Gobuster</button>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🌐 Web Testing</h4>
+                        <button class="tool-btn" onclick="runTool('burpsuite')">Burp Suite</button>
+                        <button class="tool-btn" onclick="runTool('sqlmap')">SQLMap</button>
+                        <button class="tool-btn" onclick="runTool('nikto')">Nikto</button>
+                        <button class="tool-btn" onclick="runTool('dirb')">Dirb</button>
+                    </div>
+                    <div class="tool-category">
+                        <h4>💥 Exploitation</h4>
+                        <button class="tool-btn" onclick="runTool('metasploit')">Metasploit</button>
+                        <button class="tool-btn" onclick="runTool('msfvenom')">MSFVenom</button>
+                        <button class="tool-btn" onclick="runTool('searchsploit')">SearchSploit</button>
+                        <button class="tool-btn" onclick="runTool('exploit-db')">Exploit-DB</button>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🔐 Password Attacks</h4>
+                        <button class="tool-btn" onclick="runTool('john')">John the Ripper</button>
+                        <button class="tool-btn" onclick="runTool('hashcat')">Hashcat</button>
+                        <button class="tool-btn" onclick="runTool('hydra')">Hydra</button>
+                        <button class="tool-btn" onclick="runTool('medusa')">Medusa</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-workspace">
+                <div class="terminal-container">
+                    <div class="terminal-tabs">
+                        <div class="tab active" data-tab="1" onclick="switchTab(1)" style="--tab-border: #00ff41; --tab-bg: rgba(0, 255, 65, 0.15); --tab-glow: rgba(0, 255, 65, 0.3); --tab-text: #00ff41;">
+                            <span class="tab-icon">💻</span>
+                            <span class="tab-name">Terminal 1</span>
+                            <span class="tab-close" onclick="closeTab(event, 1)">×</span>
+                        </div>
+                        <button class="new-tab-btn" onclick="addNewTab()" title="New Terminal Tab">+</button>
+                    </div>
+                    <div class="terminal-header">
+                        <div class="terminal-left">
+                            <div class="terminal-buttons">
+                                <span class="btn red" title="Close"></span>
+                                <span class="btn yellow" title="Minimize"></span>
+                                <span class="btn green" title="Maximize"></span>
+                            </div>
+                            <span class="terminal-title" id="terminalTitle">🐉 root@kali:~#</span>
+                        </div>
+                        <div class="terminal-center">
+                            <span class="terminal-status">⚡ LIVE SESSION</span>
+                        </div>
+                        <div class="terminal-actions">
+                            <button onclick="clearTerminal()" title="Clear Terminal">🗑️</button>
+                            <button onclick="fullscreenTerminal()" title="Fullscreen">⛶</button>
+                        </div>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-scanlines"></div>
+                        <div class="terminal-input-line">
+                            <span class="terminal-prompt" id="terminalPrompt">┌──(root㉿kali)-[~]
+└─# </span>
+                            <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" spellcheck="false" autofocus>
+                        </div>
+                        <div class="terminal-output" id="terminalOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lab-objectives">
+                    <div class="panel-header">
+                        <h3>🎯 Objectives</h3>
+                        <button class="toggle-panel" onclick="togglePanel('objectives')">−</button>
+                    </div>
+                    <div class="objectives-content" id="objectivesContent">
+                        <div class="objective-item">
+                            <input type="checkbox" id="obj1">
+                            <label for="obj1">Perform network reconnaissance</label>
+                        </div>
+                        <div class="objective-item">
+                            <input type="checkbox" id="obj2">
+                            <label for="obj2">Identify open ports and services</label>
+                        </div>
+                        <div class="objective-item">
+                            <input type="checkbox" id="obj3">
+                            <label for="obj3">Find web application vulnerabilities</label>
+                        </div>
+                        <div class="objective-item">
+                            <input type="checkbox" id="obj4">
+                            <label for="obj4">Exploit identified vulnerabilities</label>
+                        </div>
+                        <div class="objective-item">
+                            <input type="checkbox" id="obj5">
+                            <label for="obj5">Capture the flag</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <div class="panel-header">
+                    <h3>📋 Lab Info</h3>
+                    <button class="toggle-panel" onclick="togglePanel('info')">−</button>
+                </div>
+                <div class="info-content" id="infoContent">
+                    <div class="info-section">
+                        <h4>Target Information</h4>
+                        <p><strong>IP:</strong> <span id="targetIP">10.10.10.50</span></p>
+                        <p><strong>OS:</strong> <span id="targetOS">Linux Ubuntu</span></p>
+                        <p><strong>Difficulty:</strong> <span id="labDifficulty">Beginner</span></p>
+                    </div>
+                    <div class="info-section">
+                        <h4>Progress</h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="labProgress" style="width: 0%"></div>
+                        </div>
+                        <p><span id="progressText">0/5 objectives completed</span></p>
+                    </div>
+                    <div class="info-section">
+                        <h4>Hints</h4>
+                        <div class="hints-container" id="hintsContainer">
+                            <button class="hint-btn" onclick="showHint(1)">💡 Hint 1</button>
+                            <button class="hint-btn" onclick="showHint(2)">💡 Hint 2</button>
+                            <button class="hint-btn" onclick="showHint(3)">💡 Hint 3</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="commands/file-system.js"></script>
+    <script src="commands/nano-editor.js"></script>
+    <script src="commands/basic-commands.js"></script>
+    <script src="commands/network-commands.js"></script>
+    <script src="commands/web-commands.js"></script>
+    <script src="commands/exploit-commands.js"></script>
+    <script src="commands/password-commands.js"></script>
+    <script src="commands/wireless-commands.js"></script>
+    <script src="commands/windows-commands.js"></script>
+    <script src="commands/forensics-commands.js"></script>
+    <script src="commands/command-loader.js"></script>
+    <script src="lab-engine.js"></script>
+    <script src="tor-browser.js"></script>
+    <script src="profile-loader.js"></script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>Interactive Cybersecurity Training Platform</p>
+                    <p>Educational purposes only</p>
+                    <p>All simulated activities</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

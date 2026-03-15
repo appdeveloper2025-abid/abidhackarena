@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AbidHack Arena</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#00ff41">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="pages-neumorphism.css">
+    <link rel="stylesheet" href="tor-browser.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link rel="stylesheet" href="mobile-responsive.css">
+    <link rel="stylesheet" href="dashboard-mobile.css">
+    <link rel="stylesheet" href="navbar-mobile-fix.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <div class="tor-search-box">
+                    <span class="tor-search-icon">🧅</span>
+                    <input type="text" id="tor-search-input" placeholder="Tor Search..." onkeypress="if(event.key==='Enter') torSearch()">
+                    <button onclick="torSearch()" class="tor-search-btn">🔍</button>
+                </div>
+                <a href="home.html" class="home-btn">🏠 Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="lab.html">Lab</a>
+                <a href="practical-labs.html">Labs</a>
+                <a href="challenges.html">Challenges</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <div class="nav-dropdown profile-dropdown">
+                    <a href="profile.html" class="nav-profile-avatar" id="navProfileAvatar">
+                        <img id="navProfileImage" src="" alt="Profile" style="display: none;">
+                        <span id="navProfileInitial">H</span>
+                    </a>
+                    <div class="dropdown-menu profile-menu">
+                        <a href="profile.html">⚙️ Settings</a>
+                        <a href="#" onclick="handleLogout(); return false;">🚪 Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Welcome back, <span id="username">Hacker</span></h1>
+            <p>Ready to continue your cybersecurity journey?</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="profile-card glass-panel">
+                <h2>Profile</h2>
+                <div class="profile-info">
+                    <div class="avatar">👨‍💻</div>
+                    <div class="user-stats">
+                        <h3 id="display-username">Hacker</h3>
+                        <div class="rank-badge" id="rank-badge">Beginner</div>
+                        <div class="xp-info">
+                            <span>XP: <span id="user-xp">0</span></span>
+                            <span>Level: <span id="user-level">1</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="xp-progress"></div>
+                </div>
+                <div class="achievements">
+                    <h4>Achievements</h4>
+                    <div class="badges" id="user-badges">
+                        <span class="badge">🎯 First Steps</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-card glass-panel">
+                <h2>📊 Statistics Overview</h2>
+                
+                <!-- XP Progress Line Chart -->
+                <div class="chart-container">
+                    <h3>XP Progress (Last 7 Days)</h3>
+                    <canvas id="xpLineChart" width="400" height="200"></canvas>
+                </div>
+
+                <!-- Skills Horizontal Bar Chart -->
+                <div class="chart-container">
+                    <h3>Skills Mastery</h3>
+                    <canvas id="skillsBarChart" width="400" height="250"></canvas>
+                </div>
+
+                <!-- Challenge Categories Pie Chart -->
+                <div class="chart-container">
+                    <h3>Challenges by Category</h3>
+                    <canvas id="categoryPieChart" width="300" height="300"></canvas>
+                </div>
+
+                <!-- Activity Vertical Bar Chart -->
+                <div class="chart-container">
+                    <h3>Weekly Activity</h3>
+                    <canvas id="activityBarChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+            <div class="quick-actions glass-panel">
+                <h2>Quick Actions</h2>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="location.href='lab.html'">
+                        <span class="btn-icon">🖥️</span>
+                        <span>Launch Lab</span>
+                    </button>
+                    <button class="action-btn" onclick="location.href='practical-labs.html'">
+                        <span class="btn-icon">🏭</span>
+                        <span>Practical Labs</span>
+                    </button>
+                    <button class="action-btn" onclick="location.href='challenges.html'">
+                        <span class="btn-icon">🏴☠️</span>
+                        <span>CTF Challenges</span>
+                    </button>
+                    <button class="action-btn" onclick="location.href='all-features.html'">
+                        <span class="btn-icon">🚀</span>
+                        <span>All Features</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="categories-card glass-panel">
+                <h2>Lab Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-item" onclick="location.href='lab.html?category=web'">
+                        <div class="category-icon">🌐</div>
+                        <h3>Web Exploitation</h3>
+                        <p>SQL injection, XSS, CSRF</p>
+                    </div>
+                    <div class="category-item" onclick="location.href='lab.html?category=network'">
+                        <div class="category-icon">🔍</div>
+                        <h3>Network Scanning</h3>
+                        <p>Port scanning, enumeration</p>
+                    </div>
+                    <div class="category-item" onclick="location.href='lab.html?category=crypto'">
+                        <div class="category-icon">🔐</div>
+                        <h3>Cryptography</h3>
+                        <p>Hash cracking, encryption</p>
+                    </div>
+                    <div class="category-item" onclick="location.href='lab.html?category=osint'">
+                        <div class="category-icon">🕵️</div>
+                        <h3>OSINT</h3>
+                        <p>Information gathering</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-activity glass-panel">
+                <h2>Recent Activity</h2>
+                <div class="activity-list" id="activity-list">
+                    <div class="activity-item">
+                        <span class="activity-time">Just now</span>
+                        <span class="activity-text">Logged into AbidHack Arena</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="learning-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close" onclick="closeLearning()">&times;</span>
+            <h2>Learning Resources</h2>
+            <div class="learning-grid">
+                <div class="learning-item">
+                    <h3>Nmap - Network Scanner</h3>
+                    <p>Usage: nmap [options] target</p>
+                    <code>nmap -sS target.com</code>
+                </div>
+                <div class="learning-item">
+                    <h3>SQLMap - SQL Injection</h3>
+                    <p>Usage: sqlmap -u [URL]</p>
+                    <code>sqlmap -u "http://target.com/page?id=1"</code>
+                </div>
+                <div class="learning-item">
+                    <h3>Hydra - Brute Force</h3>
+                    <p>Usage: hydra -l [user] -P [wordlist] [target]</p>
+                    <code>hydra -l admin -P wordlist.txt ssh://target.com</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="tor-browser.js"></script>
+    <script src="profile-loader.js"></script>
+    <script src="dashboard-charts.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserProfile();
+            updateDashboard();
+        });
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>Interactive Cybersecurity Training Platform</p>
+                    <p>Educational purposes only</p>
+                    <p>All simulated activities</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

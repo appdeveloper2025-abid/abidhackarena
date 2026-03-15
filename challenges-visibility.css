@@ -1,0 +1,72 @@
+/* Challenges Page Text Visibility Fixes */
+
+/* Flag Input Box */
+.flag-input,
+input[type="text"].flag-input,
+input[placeholder*="flag"],
+input[placeholder*="Flag"],
+input[placeholder*="FLAG"] {
+    color: #1a202c !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    background: #ffffff !important;
+    border: 2px solid #0066ff !important;
+}
+
+.flag-input::placeholder {
+    color: #718096 !important;
+    font-weight: 500 !important;
+}
+
+/* Challenge Messages */
+.challenge-message,
+.error-message,
+.success-message,
+.login-message,
+.status-message {
+    color: #1a202c !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    padding: 0.8rem 1rem !important;
+    border-radius: 10px !important;
+    margin: 0.5rem 0 !important;
+}
+
+.error-message,
+.challenge-message.error {
+    background: #fee !important;
+    border: 2px solid #f56565 !important;
+    color: #c53030 !important;
+}
+
+.success-message,
+.challenge-message.success {
+    background: #efe !important;
+    border: 2px solid #48bb78 !important;
+    color: #2f855a !important;
+}
+
+/* Challenge Description Text */
+.challenge-description,
+.challenge-hint,
+.challenge-details {
+    color: #1a202c !important;
+    font-weight: 600 !important;
+    line-height: 1.8 !important;
+}
+
+/* Challenge Card Text */
+.challenge-card h3,
+.challenge-card h4,
+.challenge-card p,
+.challenge-card span {
+    color: #1a202c !important;
+    font-weight: 600 !important;
+}
+
+/* Submit Button Text */
+.submit-flag-btn,
+button[type="submit"] {
+    color: #1a202c !important;
+    font-weight: 700 !important;
+}

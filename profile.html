@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - AbidHack Arena</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#00ff41">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="stylesheet" href="neumorphism-theme.css">
+    <link rel="stylesheet" href="pages-neumorphism.css">
+    <link rel="stylesheet" href="tor-browser.css">
+    <link rel="stylesheet" href="text-color-override.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="AbidHack Arena" class="nav-logo">
+                <div class="logo-text">
+                    <span class="cyber-text">AbidHack</span>
+                    <span class="x-text">Arena</span>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <div class="tor-search-box">
+                    <span class="tor-search-icon">🧅</span>
+                    <input type="text" id="tor-search-input" placeholder="Tor Search..." onkeypress="if(event.key==='Enter') torSearch()">
+                    <button onclick="torSearch()" class="tor-search-btn">🔍</button>
+                </div>
+                <a href="index.html" class="home-btn">🏠 Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="lab.html">Terminal</a>
+                <a href="practical-labs.html">Labs</a>
+                <a href="challenges.html">Challenges</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="#" onclick="logout(); return false;" class="logout-link">🚪 Logout</a>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-header glass-panel">
+            <div class="profile-banner">
+                <div class="profile-avatar-container">
+                    <div class="profile-avatar-large" id="profileAvatar">
+                        <img id="profileImage" src="" alt="Profile" style="display: none;">
+                        <span id="profileInitial">A</span>
+                    </div>
+                    <input type="file" id="photoUpload" accept="image/*" style="display: none;" onchange="uploadPhoto(event)">
+                    <button class="upload-photo-btn" onclick="document.getElementById('photoUpload').click()">
+                        📷 Upload Photo
+                    </button>
+                </div>
+                <div class="profile-info">
+                    <h1 id="profileUsername">Hacker</h1>
+                    <p class="profile-title" id="profileTitle">Ethical Hacker</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="profileLevel">1</span>
+                            <span class="stat-label">Level</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="profileXP">0</span>
+                            <span class="stat-label">XP</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="profileRank">Beginner</span>
+                            <span class="stat-label">Rank</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="edit-profile-btn" onclick="toggleEditMode()">
+                    <span id="editBtnText">Edit Profile</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-left">
+                <div class="profile-section glass-panel">
+                    <h3>Personal Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Username</label>
+                            <input type="text" id="editUsername" class="edit-input" disabled>
+                            <span id="displayUsername" class="display-text">Hacker</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Email</label>
+                            <input type="email" id="editEmail" class="edit-input" disabled>
+                            <span id="displayEmail" class="display-text">hacker@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Bio</label>
+                            <textarea id="editBio" class="edit-input" disabled rows="3"></textarea>
+                            <span id="displayBio" class="display-text">Ethical hacker in training</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Join Date</label>
+                            <span id="displayJoinDate" class="display-text">2026-01-01</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section glass-panel">
+                    <h3>Skills & Expertise</h3>
+                    <div class="skills-container">
+                        <div id="skillsList" class="skills-list"></div>
+                        <div class="add-skill-container" style="display: none;">
+                            <input type="text" id="newSkill" placeholder="Add new skill">
+                            <button onclick="addSkill()">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section glass-panel">
+                    <h3>Achievements</h3>
+                    <div id="badgesList" class="badges-container"></div>
+                </div>
+            </div>
+
+            <div class="profile-right">
+                <div class="profile-section glass-panel">
+                    <h3>Activity Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">🧪</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="completedLabs">0</span>
+                                <span class="stat-name">Labs Completed</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="solvedChallenges">0</span>
+                                <span class="stat-name">CTF Solved</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🛠️</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="toolsUsed">0</span>
+                                <span class="stat-name">Tools Used</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="timeSpent">0h</span>
+                                <span class="stat-name">Time Spent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section glass-panel">
+                    <h3>Progress Overview</h3>
+                    <div class="progress-overview">
+                        <div class="progress-item">
+                            <span class="progress-label">Overall Progress</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="overallProgress" style="width: 25%"></div>
+                            </div>
+                            <span class="progress-percentage">25%</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-label">Current Level</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="levelProgress" style="width: 60%"></div>
+                            </div>
+                            <span class="progress-percentage" id="levelPercentage">60%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section glass-panel">
+                    <h3>Recent Activity</h3>
+                    <div id="recentActivity" class="activity-feed"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="tor-browser.js"></script>
+    <script src="logout.js"></script>
+    <script>
+        let editMode = false;
+        let userData = {};
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuth();
+            loadProfile();
+        });
+
+        function checkAuth() {
+            if (localStorage.getItem('abidhack_logged_in') !== 'true') {
+                window.location.href = 'login.html';
+                return;
+            }
+        }
+
+        function loadProfile() {
+            userData = JSON.parse(localStorage.getItem('abidhack_user') || '{}');
+            
+            // Load profile photo
+            const savedPhoto = localStorage.getItem('profile_photo');
+            if (savedPhoto) {
+                document.getElementById('profileImage').src = savedPhoto;
+                document.getElementById('profileImage').style.display = 'block';
+                document.getElementById('profileInitial').style.display = 'none';
+            } else {
+                document.getElementById('profileInitial').textContent = (userData.username || 'H').charAt(0).toUpperCase();
+            }
+            
+            // Update profile display
+            document.getElementById('profileUsername').textContent = userData.username || 'Hacker';
+            document.getElementById('profileTitle').textContent = `Level ${userData.level || 1} ${getRankName(userData.level || 1)}`;
+            document.getElementById('profileLevel').textContent = userData.level || 1;
+            document.getElementById('profileXP').textContent = (userData.xp || 0).toLocaleString();
+            document.getElementById('profileRank').textContent = getRankName(userData.level || 1);
+            
+            // Update personal info
+            document.getElementById('displayUsername').textContent = userData.username || 'Hacker';
+            document.getElementById('displayEmail').textContent = userData.email || 'hacker@example.com';
+            document.getElementById('displayBio').textContent = userData.bio || 'Ethical hacker in training';
+            document.getElementById('displayJoinDate').textContent = new Date(userData.joinDate || Date.now()).toLocaleDateString();
+            
+            // Update edit inputs
+            document.getElementById('editUsername').value = userData.username || '';
+            document.getElementById('editEmail').value = userData.email || '';
+            document.getElementById('editBio').value = userData.bio || '';
+            
+            // Update statistics
+            document.getElementById('completedLabs').textContent = userData.completedLabs || 0;
+            document.getElementById('solvedChallenges').textContent = userData.solvedChallenges || 0;
+            document.getElementById('toolsUsed').textContent = userData.toolsUsed || 0;
+            document.getElementById('timeSpent').textContent = `${Math.floor((userData.timeSpent || 0) / 60)}h`;
+            
+            // Update skills
+            updateSkillsList();
+            
+            // Update badges
+            updateBadgesList();
+            
+            // Update progress
+            updateProgress();
+            
+            // Update recent activity
+            updateRecentActivity();
+        }
+
+        function uploadPhoto(event) {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const photoData = e.target.result;
+                    localStorage.setItem('profile_photo', photoData);
+                    document.getElementById('profileImage').src = photoData;
+                    document.getElementById('profileImage').style.display = 'block';
+                    document.getElementById('profileInitial').style.display = 'none';
+                    showNotification('Profile photo updated!', 'success');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function getRankName(level) {
+            const ranks = {
+                1: 'Beginner', 2: 'Novice', 3: 'Apprentice', 4: 'Intermediate', 5: 'Advanced',
+                6: 'Expert', 7: 'Professional', 8: 'Specialist', 9: 'Master', 10: 'Elite',
+                11: 'Legend', 12: 'Grandmaster', 13: 'Champion', 14: 'Overlord', 15: 'Cyber God'
+            };
+            return ranks[level] || 'Beginner';
+        }
+
+        function toggleEditMode() {
+            editMode = !editMode;
+            const editInputs = document.querySelectorAll('.edit-input');
+            const displayTexts = document.querySelectorAll('.display-text');
+            const editBtn = document.getElementById('editBtnText');
+            const addSkillContainer = document.querySelector('.add-skill-container');
+            
+            if (editMode) {
+                editInputs.forEach(input => input.disabled = false);
+                displayTexts.forEach(text => text.style.display = 'none');
+                editInputs.forEach(input => input.style.display = 'block');
+                editBtn.textContent = 'Save Changes';
+                addSkillContainer.style.display = 'flex';
+            } else {
+                // Save changes
+                saveProfile();
+                editInputs.forEach(input => input.disabled = true);
+                displayTexts.forEach(text => text.style.display = 'block');
+                editInputs.forEach(input => input.style.display = 'none');
+                editBtn.textContent = 'Edit Profile';
+                addSkillContainer.style.display = 'none';
+            }
+        }
+
+        function saveProfile() {
+            userData.username = document.getElementById('editUsername').value;
+            userData.email = document.getElementById('editEmail').value;
+            userData.bio = document.getElementById('editBio').value;
+            userData.avatar = userData.username.charAt(0).toUpperCase();
+            
+            localStorage.setItem('abidhack_user', JSON.stringify(userData));
+            
+            // Update users database
+            const users = JSON.parse(localStorage.getItem('abidhack_users') || '{}');
+            users[userData.email] = userData;
+            localStorage.setItem('abidhack_users', JSON.stringify(users));
+            
+            loadProfile();
+            showNotification('Profile updated successfully!', 'success');
+        }
+
+        function updateSkillsList() {
+            const skillsList = document.getElementById('skillsList');
+            skillsList.innerHTML = '';
+            
+            (userData.skills || []).forEach(skill => {
+                const skillTag = document.createElement('span');
+                skillTag.className = 'skill-tag';
+                skillTag.innerHTML = `${skill} ${editMode ? '<button onclick="removeSkill(\'' + skill + '\')">×</button>' : ''}`;
+                skillsList.appendChild(skillTag);
+            });
+        }
+
+        function addSkill() {
+            const newSkillInput = document.getElementById('newSkill');
+            const skill = newSkillInput.value.trim();
+            
+            if (skill && !userData.skills.includes(skill)) {
+                userData.skills = userData.skills || [];
+                userData.skills.push(skill);
+                newSkillInput.value = '';
+                updateSkillsList();
+            }
+        }
+
+        function removeSkill(skill) {
+            userData.skills = userData.skills.filter(s => s !== skill);
+            updateSkillsList();
+        }
+
+        function updateBadgesList() {
+            const badgesList = document.getElementById('badgesList');
+            badgesList.innerHTML = '';
+            
+            (userData.badges || []).forEach(badge => {
+                const badgeElement = document.createElement('span');
+                badgeElement.className = 'badge-item';
+                badgeElement.textContent = badge;
+                badgesList.appendChild(badgeElement);
+            });
+        }
+
+        function updateProgress() {
+            const level = userData.level || 1;
+            const xp = userData.xp || 0;
+            const levelThresholds = [0, 100, 250, 500, 1000, 2000, 3500, 5500, 8000, 12000, 17000, 23000, 30000, 38000, 47000];
+            
+            const currentLevelXP = levelThresholds[level - 1] || 0;
+            const nextLevelXP = levelThresholds[level] || levelThresholds[levelThresholds.length - 1];
+            
+            const levelProgress = ((xp - currentLevelXP) / (nextLevelXP - currentLevelXP)) * 100;
+            document.getElementById('levelProgress').style.width = `${Math.min(levelProgress, 100)}%`;
+            document.getElementById('levelPercentage').textContent = `${Math.round(levelProgress)}%`;
+            
+            const overallProgress = Math.min((level / 15) * 100, 100);
+            document.getElementById('overallProgress').style.width = `${overallProgress}%`;
+        }
+
+        function updateRecentActivity() {
+            const activities = JSON.parse(localStorage.getItem('abidhack_activities') || '[]');
+            const activityFeed = document.getElementById('recentActivity');
+            
+            activityFeed.innerHTML = '';
+            
+            activities.slice(0, 5).forEach(activity => {
+                const activityItem = document.createElement('div');
+                activityItem.className = 'activity-item';
+                activityItem.innerHTML = `
+                    <span class="activity-text">${activity.text}</span>
+                    <span class="activity-time">${activity.time}</span>
+                `;
+                activityFeed.appendChild(activityItem);
+            });
+        }
+
+        function logout() {
+            localStorage.removeItem('abidhack_logged_in');
+            localStorage.removeItem('abidhack_remember');
+            window.location.href = 'login.html';
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                color: #fff;
+                font-weight: bold;
+                z-index: 2000;
+                animation: slideIn 0.3s ease-out;
+                ${type === 'success' ? 'background: linear-gradient(45deg, #00ff41, #0066ff);' : 'background: linear-gradient(45deg, #ff4444, #cc0000);'}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 3000);
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Developer</h3>
+                    <p><strong>ABID MEHMOOD</strong></p>
+                    <p>Web Designer & Researcher</p>
+                    <p>BS Computer Science Student</p>
+                    <p>Interest: Cyber Space Security</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📧 Email: <a href="mailto:abidbusiness2025@gmail.com">abidbusiness2025@gmail.com</a></p>
+                    <p>📱 Phone: <a href="tel:+923029382306">03029382306</a></p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923029382306">03029382306</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>AbidHack Arena</h3>
+                    <p>Interactive Cybersecurity Training Platform</p>
+                    <p>Educational purposes only</p>
+                    <p>All simulated activities</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AbidHack Arena | Developed by ABID MEHMOOD | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

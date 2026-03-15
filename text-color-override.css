@@ -1,0 +1,98 @@
+/* Global Text Color Override - Force all white and green text to black */
+
+* {
+    color: inherit;
+}
+
+body, html {
+    color: #1a202c !important;
+}
+
+/* Override all possible white text variations */
+[style*="color: #fff"],
+[style*="color: #ffffff"],
+[style*="color: white"],
+[style*="color: rgb(255, 255, 255)"],
+[style*="color: rgb(255,255,255)"],
+[style*="color:#fff"],
+[style*="color:#ffffff"],
+[style*="color:white"],
+.terminal-line,
+.terminal-output,
+.terminal-input,
+.terminal-prompt {
+    color: #1a202c !important;
+}
+
+/* Override all possible green text variations */
+[style*="color: #00ff41"],
+[style*="color: #00c853"],
+[style*="color: rgb(0, 255, 65)"],
+[style*="color: rgb(0, 200, 83)"],
+[style*="color:#00ff41"],
+[style*="color:#00c853"],
+.terminal-line.command,
+.terminal-line.success,
+.terminal-line.info,
+.terminal-line.normal,
+.terminal-status,
+.vm-status.online,
+.cyber-text,
+.success {
+    color: #1a202c !important;
+    font-weight: 600;
+}
+
+/* Ensure all text elements use black color */
+p, span, div, a, label, h1, h2, h3, h4, h5, h6,
+li, td, th, button, input, textarea, select,
+.text, .label, .title, .description, .content {
+    color: #1a202c !important;
+}
+
+/* Terminal specific overrides */
+.terminal-body,
+.terminal-body *,
+.terminal-output *,
+.terminal-line * {
+    color: #1a202c !important;
+    font-weight: 600;
+}
+
+/* Code and pre elements */
+code, pre, .code, .command {
+    color: #1a202c !important;
+    font-weight: 600;
+}
+
+/* Links - keep them visible but black */
+a {
+    color: #1a202c !important;
+    font-weight: 600;
+}
+
+a:hover {
+    color: #0066ff !important;
+}
+
+/* Buttons text */
+button, .btn, .button {
+    color: #1a202c !important;
+    font-weight: 700;
+}
+
+/* Input placeholders */
+::placeholder {
+    color: #4a5568 !important;
+    opacity: 0.7;
+}
+
+/* Ensure visibility on all backgrounds */
+.terminal-container *,
+.terminal-body *,
+.terminal-header *,
+.lab-environment *,
+.challenges-container *,
+.dashboard-container * {
+    color: #1a202c !important;
+}

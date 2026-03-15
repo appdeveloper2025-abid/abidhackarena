@@ -1,0 +1,474 @@
+/* ============================================
+   RESPONSIVE MASTER CSS - Mobile First Approach
+   ============================================ */
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #e0e5ec;
+    color: #1a202c;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container System */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================
+   MOBILE FIRST: Base Styles (320px+)
+   ============================================ */
+
+/* Navbar */
+nav {
+    background: #e0e5ec;
+    padding: 0.75rem 1rem;
+    box-shadow: 8px 8px 16px #bec3cf, -8px -8px 16px #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.logo-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a202c;
+    display: none;
+}
+
+.nav-links {
+    display: none;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    padding: 0.5rem 1rem;
+    color: #1a202c;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.nav-links a:hover {
+    box-shadow: inset 4px 4px 8px #bec3cf, inset -4px -4px 8px #ffffff;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #1a202c;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 6px 6px 12px #bec3cf, -6px -6px 12px #ffffff;
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #e0e5ec;
+    padding: 1rem;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #1a202c;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    box-shadow: 6px 6px 12px #bec3cf, -6px -6px 12px #ffffff;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+    position: relative;
+}
+
+.profile-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 6px 6px 12px #bec3cf, -6px -6px 12px #ffffff;
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: #e0e5ec;
+    border-radius: 10px;
+    padding: 0.5rem;
+    min-width: 150px;
+    box-shadow: 8px 8px 16px #bec3cf, -8px -8px 16px #ffffff;
+}
+
+.profile-menu.active {
+    display: block;
+}
+
+.profile-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #1a202c;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Grid System */
+.grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+/* Cards */
+.card {
+    background: #e0e5ec;
+    border-radius: 15px;
+    padding: 1.25rem;
+    box-shadow: 8px 8px 16px #bec3cf, -8px -8px 16px #ffffff;
+    transition: all 0.3s;
+}
+
+.card:hover {
+    box-shadow: 12px 12px 24px #bec3cf, -12px -12px 24px #ffffff;
+}
+
+.card h2, .card h3 {
+    color: #1a202c;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.card p {
+    color: #2d3748;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #e0e5ec;
+    color: #1a202c;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 8px 8px 16px #bec3cf, -8px -8px 16px #ffffff;
+    transition: all 0.3s;
+    text-align: center;
+    min-width: 120px;
+}
+
+.btn:hover {
+    box-shadow: 12px 12px 24px #bec3cf, -12px -12px 24px #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    box-shadow: inset 4px 4px 8px #bec3cf, inset -4px -4px 8px #ffffff;
+    transform: translateY(0);
+}
+
+/* Forms */
+input, textarea, select {
+    width: 100%;
+    padding: 0.75rem;
+    background: #e0e5ec;
+    border: none;
+    border-radius: 10px;
+    color: #1a202c;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: inset 4px 4px 8px #bec3cf, inset -4px -4px 8px #ffffff;
+    font-family: 'Fira Code', monospace;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: inset 6px 6px 12px #bec3cf, inset -6px -6px 12px #ffffff;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+table th, table td {
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    color: #1a202c;
+}
+
+table th {
+    font-weight: 700;
+    border-bottom: 2px solid #bec3cf;
+}
+
+/* Footer */
+footer {
+    background: #e0e5ec;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    margin-top: 2rem;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.05);
+}
+
+footer p {
+    color: #2d3748;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   TABLET: 768px+
+   ============================================ */
+@media (min-width: 768px) {
+    html {
+        font-size: 17px;
+    }
+
+    .container {
+        padding: 0 2rem;
+    }
+
+    nav {
+        padding: 1rem 2rem;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-text {
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: none !important;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .card h2, .card h3 {
+        font-size: 1.3rem;
+    }
+
+    .card p {
+        font-size: 0.95rem;
+    }
+
+    .profile-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    table th, table td {
+        padding: 1rem;
+    }
+}
+
+/* ============================================
+   DESKTOP: 1024px+
+   ============================================ */
+@media (min-width: 1024px) {
+    html {
+        font-size: 18px;
+    }
+
+    .container {
+        padding: 0 3rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .grid.grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid.grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+        padding: 2rem;
+    }
+
+    .card h2, .card h3 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+        padding: 0.625rem 1.25rem;
+    }
+}
+
+/* ============================================
+   LARGE DESKTOP: 1440px+
+   ============================================ */
+@media (min-width: 1440px) {
+    html {
+        font-size: 19px;
+    }
+
+    .grid {
+        gap: 2.5rem;
+    }
+
+    .card {
+        padding: 2.5rem;
+    }
+}
+
+/* ============================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .btn, button, a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Remove hover effects on touch */
+    .card:hover {
+        box-shadow: 8px 8px 16px #bec3cf, -8px -8px 16px #ffffff;
+    }
+
+    /* Better tap feedback */
+    .btn:active, button:active {
+        transform: scale(0.98);
+    }
+}
+
+/* ============================================
+   LANDSCAPE MOBILE: 568px+ height
+   ============================================ */
+@media (max-height: 568px) and (orientation: landscape) {
+    nav {
+        padding: 0.5rem 1rem;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    nav, footer, .mobile-menu-toggle, .profile-dropdown {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
